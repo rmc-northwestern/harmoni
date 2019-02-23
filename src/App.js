@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -7,17 +6,20 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <img src='/wave.png' className="App-logo" alt="logo" />
+          <h1>
+            harmoni
+          </h1>
+          <h6>
+            automated harmony generator
+          </h6>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href="http://will.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Enter
           </a>
         </header>
       </div>
