@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src='/wave.png' className="App-logo" alt="logo" />
+          <img src='/wave.gif' className="App-logo" alt="logo" />
           <div className='title'>
             <span className='titleBlue'>&lt;</span>
             &nbsp;harmoni&nbsp;

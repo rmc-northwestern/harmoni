@@ -3,13 +3,15 @@
 }
 
 .App-logo {
-  pointer-events: none;
-  max-width: 300px;
-  height: 20vh;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  opacity: .8;
+  /* z-index: -1; */
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #272334;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,6 +22,11 @@
   text-align: center;
 }
 
+input{
+
+  position: relative;
+}
+
 .title{
   font-size: 64pt;
   font-weight: 100;
@@ -27,19 +34,22 @@
   text-align: center;
   width: 100%;
   padding: 20px 0px;
+  position: relative;
 }
 
 .titleBlue{
-  color: #61dafb;
+  color: #B80F42;
   fontWeight: 500;
   fontSize: .7em;
   verticalAlign: 20%;
+  position: relative;
 }
 
 .cardContainer{
   display: inline-block;
   width: 100%;
   margin-top: 30px;
+  position: relative;
 }
 
 .card{
@@ -58,7 +68,7 @@
 .card:hover{
   transform: scale(1.02);
   background: #fff;
-  color:#61dafb;
+  color:#B80F42;
   box-shadow: 3px 3px 40px 0px #111;
 }
 
@@ -115,7 +125,7 @@
   margin: 32px 10px;
   max-width: 400px;
   transition: all .2s;
-  background: #60d7ff;
+  background: #B80F42;
 }
 
 .buttonPrimary:hover{
