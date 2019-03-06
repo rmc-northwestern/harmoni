@@ -18,6 +18,7 @@ public class Main {
             int note = notes[i];
             Note n = new Note(); n.midi_num = note; n.note_to_String();
             Chord[] chords = n.get_chords(48, "major");
+            System.out.println(chords[0].number);
             int[] first_chord = chords[0].build_chord();
             out[i] = first_chord;
             }
