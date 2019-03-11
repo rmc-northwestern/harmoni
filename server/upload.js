@@ -13,6 +13,7 @@ module.exports = function upload(req, res) {
     localPathResp = 'files/chords.mid'
     fs.copyFile(file.path,localPathOrig,console.log)
     fs.copyFile(localPathOrig,localPathResp,console.log)
+    //do things to file 'localPathResp'
   });
   form.on("end", () => {
     res.writeHead(200, {

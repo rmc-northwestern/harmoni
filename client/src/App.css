@@ -155,13 +155,12 @@ input{
   color: white;
   border-radius: 40px;
   border: 0;
-  padding: 14px 30px;
   width: calc(100% - 20px);
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 2px;
   margin: 32px 10px;
-  max-width: 400px;
+  max-width: 300px;
   transition: all .2s;
   background: #B80F42;
 }

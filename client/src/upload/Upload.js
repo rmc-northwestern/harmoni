@@ -35,7 +35,7 @@ class Upload extends Component {
       await Promise.all(promises);
 
       this.setState({ successfullUploaded: true, uploading: false });
-      this.props.closeUpload('finished')
+      window.setTimeout(()=>{this.props.closeUpload('finished')},2000)
     } catch (e) {
       // Not Production ready! Do some error handling here instead...
       this.setState({ successfullUploaded: true, uploading: false });
