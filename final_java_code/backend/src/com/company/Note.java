@@ -28,6 +28,12 @@ public class Note {
                 c = new Chord[] {i, vi, iv};
 
             }
+            else if(letter == "d"){
+                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
+                Chord v = new Chord(); v.key = key-12; v.number = "v";
+                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
+                c = new Chord[] {ii, v, vii};
+            }
             else if(letter == "e"){
 
                 Chord iii = new Chord(); iii.key = key-12; iii.number = "iii";
