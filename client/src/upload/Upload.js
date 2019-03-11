@@ -35,7 +35,7 @@ class Upload extends Component {
       await Promise.all(promises);
 
       this.setState({ successfullUploaded: true, uploading: false });
-      window.setTimeout(()=>{this.props.closeUpload('finished')},2000)
+      window.setTimeout(()=>{this.props.closeUpload()},2000)
     } catch (e) {
       // Not Production ready! Do some error handling here instead...
       this.setState({ successfullUploaded: true, uploading: false });
@@ -125,7 +125,7 @@ class Upload extends Component {
   render() {
     return (
       <div className="Upload">
-        <div className='closeButton' onClick={()=>this.props.closeUpload()}>X</div>
+        <div className='closeButton' onClick={()=>this.props.closeUpload(true)}>X</div>
         <span className="Title">Upload Files</span>
         <div className="Content">
           <div>

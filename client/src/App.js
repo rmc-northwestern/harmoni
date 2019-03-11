@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Upload from './upload/Upload';
 import Nav from './Nav'
+import Loading from './Loading'
 import { Redirect } from 'react-router-dom'
 
 class App extends Component {
@@ -16,11 +17,13 @@ class App extends Component {
     }
   }
 
-  closeUpload(finished){
-    // if (finished){
-    //   <Redirect to=''
-    // }
-    this.setState({upload:false, loading:true})
+  closeUpload(closebutton){
+    if (closebutton == true){
+      this.setState({upload:false})
+    }
+    else{
+      this.setState({upload:false, loading:true})
+    }
   }
 
   renderUploadBox(){
@@ -28,11 +31,19 @@ class App extends Component {
       return(
         <div style={{position:'absolute', zIndex:999, height: '100vh', width: '100vw', top:'20vh',margin:'auto'}}>
           <div className='Card' style={{margin:'auto'}}>
-            <Upload closeUpload={()=>this.closeUpload()}/>
+            <Upload closeUpload={(e)=>this.closeUpload(e)}/>
           </div>
         </div>
       )
     }
+  }
+
+  waitForComplete(){
+    console.log('timer start')
+    window.setTimeout(()=>{
+      console.log('timer complete')
+      this.setState({complete:true,loading:false})
+    },2000)
   }
 
   render() {
@@ -76,7 +87,26 @@ class App extends Component {
         </div>
       );
     }
+
+
     if (this.state.loading){
+      this.waitForComplete()
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Nav current='home'/>
+            <img src='/wave.gif' className="App-logo" alt="logo" />
+
+            <div className='cardContainer'>
+              <Loading/>
+            </div>
+
+          </header>
+        </div>
+      );
+    }
+
+    if (this.state.complete){
       return (
         <div className="App">
           <header className="App-header">
@@ -84,34 +114,15 @@ class App extends Component {
             <img src='/wave.gif' className="App-logo" alt="logo" />
             <div className='title'>
               <span className='titleBlue'>&lt;</span>
-              &nbsp;harmoni&nbsp;
+              &nbsp;complete&nbsp;
               <span className='titleBlue'> &#47;&gt;</span>
             </div>
 
             <div className='cardContainer'>
-              <div className='card'>
-                <div className='cardHeader'>YOU GIVE US:</div>
-                <div className='cardBody'>
-                  Input MIDI file<br/>
-                  Monophonic Melody<br/>
-                  Basic Metadata
-                </div>
-              </div>
-
-              <div className='card'>
-                <div className='cardHeader'>WE GIVE YOU:</div>
-                <div className='cardBody'>
-                  Output MIDI file<br/>
-                  Harmonized Accompaniment<br/>
-                  Chord Progression
-                </div>
-              </div>
-              <br/>
-              <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
+              <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
             </div>
 
           </header>
-          {this.renderUploadBox()}
         </div>
       );
     }
