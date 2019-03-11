@@ -53,21 +53,39 @@ class Team extends Component {
                 <img className='profimg' src='/ishaan.jpg' />
               </div>
               <div className='name'>Ishaan Madan</div>
-              <div className='description'>he writes some java but also breaks things sometimes?</div>
+              <div className='description'>
+                he writes some java but also breaks things sometimes?
+                <br/>
+                <a href="mailto:ishaanmadan2020@u.northwestern.edu">
+                  Email Ishaan
+                </a>
+              </div>
             </div>
             <div className='container'>
               <div className='colorbg'>
                 <img className='profimg' src='/sarah.png' />
               </div>
               <div className='name'>Sarah O'Brien</div>
-              <div className='description'>she does math good and also plays the music #jinglebells</div>
+              <div className='description'>
+                she does math good and also plays the music #jinglebells
+                <br/>
+                <a href="mailto:sarahobrien2020@u.northwestern.edu">
+                  Email Sarah
+                </a>
+              </div>
             </div>
             <div className='container'>
               <div className='colorbg'>
                 <img className='profimg' src='/ryan.jpg' />
               </div>
               <div className='name'>Ryan McHenry</div>
-              <div className='description'>he makes things pretty and colorful and writes the no fun code!</div>
+              <div className='description'>
+                he makes things pretty and colorful and writes the no fun code!
+                <br/>
+                <a href="mailto:ryanmchenry2019@u.northwestern.edu">
+                  Email Ryan
+                </a>
+              </div>
             </div>
           </div>
         </header>

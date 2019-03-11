@@ -10,7 +10,9 @@ class App extends Component {
     super(props);
     this.state = {
       file:[],
-      upload:false
+      upload:false,
+      loading:false,
+      complete:false
     }
   }
 
@@ -18,7 +20,7 @@ class App extends Component {
     // if (finished){
     //   <Redirect to=''
     // }
-    this.setState({upload:false})
+    this.setState({upload:false, loading:true})
   }
 
   renderUploadBox(){
@@ -35,43 +37,85 @@ class App extends Component {
 
   render() {
     console.log(this.state.file)
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Nav current='home'/>
-          <img src='/wave.gif' className="App-logo" alt="logo" />
-          <div className='title'>
-            <span className='titleBlue'>&lt;</span>
-            &nbsp;harmoni&nbsp;
-            <span className='titleBlue'> &#47;&gt;</span>
-          </div>
-
-          <div className='cardContainer'>
-            <div className='card'>
-              <div className='cardHeader'>YOU GIVE US:</div>
-              <div className='cardBody'>
-                Input MIDI file<br/>
-                Monophonic Melody<br/>
-                Basic Metadata
-              </div>
+    if (!this.state.loading && !this.state.complete){
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Nav current='home'/>
+            <img src='/wave.gif' className="App-logo" alt="logo" />
+            <div className='title'>
+              <span className='titleBlue'>&lt;</span>
+              &nbsp;harmoni&nbsp;
+              <span className='titleBlue'> &#47;&gt;</span>
             </div>
 
-            <div className='card'>
-              <div className='cardHeader'>WE GIVE YOU:</div>
-              <div className='cardBody'>
-                Output MIDI file<br/>
-                Harmonized Accompaniment<br/>
-                Chord Progression
+            <div className='cardContainer'>
+              <div className='card'>
+                <div className='cardHeader'>YOU GIVE US:</div>
+                <div className='cardBody'>
+                  Input MIDI file<br/>
+                  Monophonic Melody<br/>
+                  Basic Metadata
+                </div>
               </div>
-            </div>
-            <br/>
-            <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
-          </div>
 
-        </header>
-        {this.renderUploadBox()}
-      </div>
-    );
+              <div className='card'>
+                <div className='cardHeader'>WE GIVE YOU:</div>
+                <div className='cardBody'>
+                  Output MIDI file<br/>
+                  Harmonized Accompaniment<br/>
+                  Chord Progression
+                </div>
+              </div>
+              <br/>
+              <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
+            </div>
+
+          </header>
+          {this.renderUploadBox()}
+        </div>
+      );
+    }
+    if (this.state.loading){
+      return (
+        <div className="App">
+          <header className="App-header">
+            <Nav current='home'/>
+            <img src='/wave.gif' className="App-logo" alt="logo" />
+            <div className='title'>
+              <span className='titleBlue'>&lt;</span>
+              &nbsp;harmoni&nbsp;
+              <span className='titleBlue'> &#47;&gt;</span>
+            </div>
+
+            <div className='cardContainer'>
+              <div className='card'>
+                <div className='cardHeader'>YOU GIVE US:</div>
+                <div className='cardBody'>
+                  Input MIDI file<br/>
+                  Monophonic Melody<br/>
+                  Basic Metadata
+                </div>
+              </div>
+
+              <div className='card'>
+                <div className='cardHeader'>WE GIVE YOU:</div>
+                <div className='cardBody'>
+                  Output MIDI file<br/>
+                  Harmonized Accompaniment<br/>
+                  Chord Progression
+                </div>
+              </div>
+              <br/>
+              <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
+            </div>
+
+          </header>
+          {this.renderUploadBox()}
+        </div>
+      );
+    }
+
   }
 }
 

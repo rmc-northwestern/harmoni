@@ -20,11 +20,13 @@ class About extends Component {
 
           <div className='cardContainer'>
             <div>
-              DESIGNED @: <br/><br/>
+              <b>DESIGNED @:</b> <br/><br/>
+            <span style={{fontWeight:100}}>
               Northwestern University<br/>
               EECS352 - Machine Perception of Audio<br/>
               Prof. Bryan Pardo<br/>
               Spring, 2019
+            </span>
             </div>
           </div>
         </header>
