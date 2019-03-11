@@ -172,6 +172,17 @@ public class Chord {
         else{return new int[]{0};}
     }
 
+    public Chord get_next(Chord previous){
+      float[7][7] progression = new float[7][7];
+      progression[0] = new float[]{1,.13,0,.15,.62,.05,.05};
+      progression[1] = new float[]{.49,1,.01,0,.40,.01,.09};
+      progression[2] = new float[]{.67,0,1,0,0,.33,0};
+      progression[3] = new float[]{.64,.14,0,0,.15,0,.07};
+      progression[4] = new float[]{.94,0,0,.01,1,.04,.01};
+      progression[5] = new float[]{.11,.51,0,.14,.20,1,.04};
+      progression[6] = new float[]{.82,0,.01,.01,.16,0,1};
+    }
+
 
 
     public static void main(String[] args) {
