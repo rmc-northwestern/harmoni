@@ -1,3 +1,5 @@
+package com.company;
+
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +20,12 @@ public class Main {
             int note = notes[i];
             Note n = new Note(); n.midi_num = note; n.note_to_String();
             Chord[] chords = n.get_chords(48, "major");
-            System.out.println(chords[0].number);
             int[] first_chord = chords[0].build_chord();
-            out[i] = first_chord;
-            }
+            System.out.println(first_chord[0]);
+            //System.out.println(chords[0].number);
+            //System.out.println(chords[0]);
+            //out[i] = first_chord;
+        }
         return out;
     }
 
@@ -29,6 +33,14 @@ public class Main {
         Main m = new Main();
         int[][] result = m.chords_from_midi();
         System.out.println(result.length);
+        /*MidiParser mp = new MidiParser();
+        int[] notes = mp.get_notes();
+        int note = notes[0];
+        Note n = new Note(); n.midi_num = note; n.note_to_String();
+        Chord[] chords = n.get_chords(48, "major");
+        int[] first_chord = chords[0].build_chord();
+        System.out.println(first_chord[0]);
+        System.out.println(first_chord[1]);*/
 
 
         Note c = new Note();
@@ -60,5 +72,6 @@ public class Main {
         System.out.println(iv.build_chord()[0]);*/
 
 
-        }
     }
+}
+
