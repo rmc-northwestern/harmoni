@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import './Team.css';
 import Upload from './upload/Upload';
 import Nav from './Nav'
 import { Redirect } from 'react-router-dom'
 
-class App extends Component {
+class Team extends Component {
 
   constructor(props){
     super(props);
@@ -38,41 +39,41 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Nav current='home'/>
+          <Nav current='team'/>
           <img src='/wave.gif' className="App-logo" alt="logo" />
           <div className='title'>
             <span className='titleBlue'>&lt;</span>
-            &nbsp;harmoni&nbsp;
+            &nbsp;team&nbsp;
             <span className='titleBlue'> &#47;&gt;</span>
           </div>
 
           <div className='cardContainer'>
-            <div className='card'>
-              <div className='cardHeader'>YOU GIVE US:</div>
-              <div className='cardBody'>
-                Input MIDI file<br/>
-                Monophonic Melody<br/>
-                Basic Metadata
+            <div className='container'>
+              <div className='colorbg'>
+                <img className='profimg' src='/ishaan.jpg' />
               </div>
+              <div className='name'>Ishaan Madan</div>
+              <div className='description'>he writes some java but also breaks things sometimes?</div>
             </div>
-
-            <div className='card'>
-              <div className='cardHeader'>WE GIVE YOU:</div>
-              <div className='cardBody'>
-                Output MIDI file<br/>
-                Harmonized Accompaniment<br/>
-                Chord Progression
+            <div className='container'>
+              <div className='colorbg'>
+                <img className='profimg' src='/sarah.png' />
               </div>
+              <div className='name'>Sarah O'Brien</div>
+              <div className='description'>she does math good and also plays the music #jinglebells</div>
             </div>
-            <br/>
-            <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
+            <div className='container'>
+              <div className='colorbg'>
+                <img className='profimg' src='/ryan.jpg' />
+              </div>
+              <div className='name'>Ryan McHenry</div>
+              <div className='description'>he makes things pretty and colorful and writes the no fun code!</div>
+            </div>
           </div>
-
         </header>
-        {this.renderUploadBox()}
       </div>
     );
   }
 }
 
-export default App;
+export default Team;

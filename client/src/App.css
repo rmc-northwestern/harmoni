@@ -83,6 +83,9 @@ input{
   width: 100%;
   margin-top: 30px;
   position: relative;
+  opacity: 0;
+  animation: fade-in-down 2s forwards;
+  animation-delay: 1s;
 }
 
 .card{
@@ -96,9 +99,6 @@ input{
   border-radius: 20px;
   box-shadow: 3px 3px 20px -2px #222;
   transition: all .5s ease;
-  opacity: 0;
-  animation: fade-in-down 2s forwards;
-  animation-delay: 1s;
 
 }
 
