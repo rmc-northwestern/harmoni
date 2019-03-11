@@ -21,6 +21,7 @@ public class Main {
             Note n = new Note(); n.midi_num = note; n.note_to_String();
             Chord[] chords = n.get_chords(48, "major");
             System.out.println(chords.length);
+            System.out.println(n.letter);
             int[] first_chord = chords[0].build_chord();
             //System.out.println(first_chord[0]);
             //System.out.println(chords[0].number);
@@ -30,18 +31,12 @@ public class Main {
         return out;
     }
 
+
+
     public static void main(String[] args) {
-        Main m = new Main();
-        int[][] result = m.chords_from_midi();
-        //System.out.println(result.length);
-        /*MidiParser mp = new MidiParser();
-        int[] notes = mp.get_notes();
-        int note = notes[0];
-        Note n = new Note(); n.midi_num = note; n.note_to_String();
-        Chord[] chords = n.get_chords(48, "major");
-        int[] first_chord = chords[0].build_chord();
-        System.out.println(first_chord[0]);
-        System.out.println(first_chord[1]);*/
+        /*Main m = new Main();
+        int[][] result = m.chords_from_midi();*/
+
 
 
         Note c = new Note();
