@@ -1,3 +1,5 @@
+package com.company;
+
 public class Note {
 
     public int midi_num;
@@ -61,9 +63,7 @@ public class Note {
     }
 
 
-    public static void main() {
-        Note c = new Note();
-        c.midi_num = 66;
-        System.out.println(c.note_to_String());
+    public static void main(String[] args) {
+
     }
 }
