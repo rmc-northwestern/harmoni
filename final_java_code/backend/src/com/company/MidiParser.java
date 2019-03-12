@@ -19,7 +19,7 @@ public class MidiParser {
             }
             sequencer.open(); // Open device
             // Create sequence, the File must contain MIDI file data.
-            Sequence sequence = MidiSystem.getSequence(new File("test simple.mid"));
+            Sequence sequence = MidiSystem.getSequence(new File("test_simple.mid"));
 
             Track[] a = sequence.getTracks();
             Track track1 = a[0];
