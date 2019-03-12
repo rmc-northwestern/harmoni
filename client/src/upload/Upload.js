@@ -43,7 +43,7 @@ class Upload extends Component {
   }
 
   sendRequest(file) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       const req = new XMLHttpRequest();
 
       req.upload.addEventListener("progress", event => {
@@ -76,6 +76,8 @@ class Upload extends Component {
 
       req.open("POST", "http://localhost:8000/upload");
       req.send(formData);
+      window.setTimeout(()=>{console.log(req.response)},2000)
+
     });
   }
 

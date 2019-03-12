@@ -13,8 +13,7 @@ server.use(cors(corsOptions));
 
 server.post("/upload", upload);
 
-server.get('/download', async function(req, res){
-  var child = await require('child_process').spawn('java',['-jar', 'files/test.jar']);
+server.get('/download', function(req, res){
   var file = 'files/test.txt'
   res.download(file); // Set disposition and send it.
 });

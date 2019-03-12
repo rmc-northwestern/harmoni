@@ -3,22 +3,20 @@ import './App.css';
 import Upload from './upload/Upload';
 import Nav from './Nav'
 import Loading from './Loading'
-import { Redirect } from 'react-router-dom'
 
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      file:[],
       upload:false,
       loading:false,
-      complete:true
+      complete:false
     }
   }
 
   closeUpload(closebutton){
-    if (closebutton == true){
+    if (closebutton === true){
       this.setState({upload:false})
     }
     else{
@@ -39,15 +37,12 @@ class App extends Component {
   }
 
   waitForComplete(){
-    console.log('timer start')
     window.setTimeout(()=>{
-      console.log('timer complete')
       this.setState({complete:true,loading:false})
     },2000)
   }
 
   render() {
-    console.log(this.state.file)
     if (!this.state.loading && !this.state.complete){
       return (
         <div className="App">

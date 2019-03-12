@@ -3,7 +3,6 @@ import './App.css';
 import './Team.css';
 import Upload from './upload/Upload';
 import Nav from './Nav'
-import { Redirect } from 'react-router-dom'
 
 class Team extends Component {
 
@@ -50,7 +49,7 @@ class Team extends Component {
           <div className='cardContainer'>
             <div className='container'>
               <div className='colorbg'>
-                <img className='profimg' src='/ishaan.jpg' />
+                <img className='profimg' src='/ishaan.jpg' alt='' />
               </div>
               <div className='name'>Ishaan Madan</div>
               <div className='description'>
@@ -63,7 +62,7 @@ class Team extends Component {
             </div>
             <div className='container'>
               <div className='colorbg'>
-                <img className='profimg' src='/sarah.png' />
+                <img className='profimg' src='/sarah.png' alt='' />
               </div>
               <div className='name'>Sarah O'Brien</div>
               <div className='description'>
@@ -76,7 +75,7 @@ class Team extends Component {
             </div>
             <div className='container'>
               <div className='colorbg'>
-                <img className='profimg' src='/ryan.jpg' />
+                <img className='profimg' src='/ryan.jpg' alt='' />
               </div>
               <div className='name'>Ryan McHenry</div>
               <div className='description'>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import './About.css'
 import Nav from './Nav'
-import { Redirect } from 'react-router-dom'
 
 class About extends Component {
 
