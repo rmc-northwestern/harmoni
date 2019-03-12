@@ -11,7 +11,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "formidable": "^1.2.1",
-    "node-jre": "^0.2.3"
+    "formidable": "^1.2.1"
   }
 }
