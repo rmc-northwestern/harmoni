@@ -13,7 +13,7 @@ class App extends Component {
       file:[],
       upload:false,
       loading:false,
-      complete:false
+      complete:true
     }
   }
 
@@ -119,7 +119,9 @@ class App extends Component {
             </div>
 
             <div className='cardContainer'>
-              <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
+              <a href='http://localhost:8000/download'>
+                <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
+              </a>
             </div>
 
           </header>
