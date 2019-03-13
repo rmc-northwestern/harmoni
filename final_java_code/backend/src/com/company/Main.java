@@ -8,6 +8,9 @@ import javax.sound.midi.Track;
 import java.util.Vector;
 import javax.sound.midi.spi.*;
 import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
     public int[][] chords_from_midi(){
@@ -30,12 +33,70 @@ public class Main {
         return out;
     }
 
+    public void nums_from_midi(){
+        MidiParser mp = new MidiParser();
+        int[] notes = mp.get_notes();
+
+        String out = "";
+
+        Chord current = new Chord(); current.number = "i"; current.key = 60;
+        for(int i = 0; i < notes.length; i++){
+            int note = notes[i];
+            Note n = new Note(); n.midi_num = note; n.note_to_String();
+
+
+            Chord next = current.get_next(n, 60);
+            out = out + next.number + " ";
+            current = next;
+        }
+
+
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+
+        try {
+
+            String content = out;
+
+            fw = new FileWriter("result.txt");
+            bw = new BufferedWriter(fw);
+            bw.write(content);
+
+            System.out.println(out + " is written to file " + "result.txt");
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (bw != null)
+                    bw.close();
+
+                if (fw != null)
+                    fw.close();
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        }
+
+
+
+    }
+
 
 
     public static void main(String[] args) {
-        System.out.println("here");
+
         Main m = new Main();
-        int[][] result = m.chords_from_midi();
+        m.nums_from_midi();
+        //int[][] result = m.chords_from_midi();
 
         /*System.out.println(result[0][0]);
         System.out.println(result[0][1]);
@@ -49,9 +110,9 @@ public class Main {
         System.out.println(result[2][1]);
         System.out.println(result[2][2]);*/
 
-        System.out.println(result[3][0]);
+        /*System.out.println(result[3][0]);
         System.out.println(result[3][1]);
-        System.out.println(result[3][2]);
+        System.out.println(result[3][2]);*/
 
         Note c = new Note();
         c.midi_num = 60;
