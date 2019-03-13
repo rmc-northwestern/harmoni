@@ -194,7 +194,7 @@ public class Chord {
         String num = number;
         double[] probs = progression.get(num);
         Chord[] options = note.get_chords(60, "major");
-        System.out.println("options " + options[0].number + " " + options[1].number + " " + options[2].number);
+        //System.out.println("options " + options[0].number + " " + options[1].number + " " + options[2].number);
 
         //generate "random" based on probabilities
         Random rand = new Random();
@@ -229,7 +229,7 @@ public class Chord {
                 int_options[j] = 6;
             }
         }
-        System.out.println("int_options " + int_options[0] + " " + int_options[1] + " " + int_options[2]);
+        //System.out.println("int_options " + int_options[0] + " " + int_options[1] + " " + int_options[2]);
 
         double[] options_probs = new double[int_options.length];
         int max_idx = -1;
@@ -241,9 +241,9 @@ public class Chord {
                 max_idx = int_options[i];
             }
         }
-        System.out.println("options_probs " + options_probs[0] + " " + options_probs[1] + " " + options_probs[2]);
+        /*System.out.println("options_probs " + options_probs[0] + " " + options_probs[1] + " " + options_probs[2]);
         System.out.println("max " + max);
-        System.out.println("man_idx" + max_idx);
+        System.out.println("man_idx" + max_idx);*/
         next = max_idx;
 
 

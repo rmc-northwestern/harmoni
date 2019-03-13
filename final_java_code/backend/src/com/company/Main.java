@@ -16,17 +16,16 @@ public class Main {
 
         int[][] out = new int[notes.length][3];
 
+        Chord current = new Chord(); current.number = "i"; current.key = 60;
         for(int i = 0; i < notes.length; i++){
             int note = notes[i];
             Note n = new Note(); n.midi_num = note; n.note_to_String();
-            Chord[] chords = n.get_chords(48, "major");
-            System.out.println(chords.length);
             System.out.println(n.letter);
-            int[] first_chord = chords[0].build_chord();
-            //System.out.println(first_chord[0]);
-            //System.out.println(chords[0].number);
-            //System.out.println(chords[0]);
-            out[i] = first_chord;
+
+            out[i] = current.build_chord();
+
+            Chord next = current.get_next(n, 60);
+            current = next;
         }
         return out;
     }
@@ -34,10 +33,25 @@ public class Main {
 
 
     public static void main(String[] args) {
-        /*Main m = new Main();
-        int[][] result = m.chords_from_midi();*/
+        System.out.println("here");
+        Main m = new Main();
+        int[][] result = m.chords_from_midi();
 
+        /*System.out.println(result[0][0]);
+        System.out.println(result[0][1]);
+        System.out.println(result[0][2]);*/
 
+        /*System.out.println(result[1][0]);
+        System.out.println(result[1][1]);
+        System.out.println(result[1][2]);*/
+
+        /*System.out.println(result[2][0]);
+        System.out.println(result[2][1]);
+        System.out.println(result[2][2]);*/
+
+        System.out.println(result[3][0]);
+        System.out.println(result[3][1]);
+        System.out.println(result[3][2]);
 
         Note c = new Note();
         c.midi_num = 60;
