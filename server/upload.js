@@ -9,17 +9,28 @@ module.exports = async function upload(req, res) {
     // e.g. save it to the database
     // you can access it using file.path
     // console.log(file.path)
-    localPathOrig = 'files/midi.mid'
-    localPathResp = 'files/chords.mid'
-    fs.copyFile(file.path,localPathOrig,console.log)
-    fs.copyFile(localPathOrig,localPathResp,console.log)
-    //do things to file 'localPathResp'
+
+    inputFile = 'files/input.mid'
+    fs.copyFile(file.path,inputFile,console.log)
 
     //check for existing test file to make sure an old one isnt returned
-    if (fs.existsSync('files/test.txt')) {
-      fs.unlinkSync('files/test.txt'); //make sure to not send old file
+    if (fs.existsSync('files/result.txt')) {
+      fs.unlinkSync('files/result.txt'); //make sure to not send old file
     }
-    var child = await require('child_process').spawn('java',['-jar', 'files/test.jar']);
+
+    console.log('running java on file ', inputFile)
+    var child = await require('child_process').spawn('java',['-jar', 'files/test.jar', inputFile]);
+
+    child.stdout.on('data', (data) => {
+      console.log(`child stdout:\n${data}`);
+    });
+
+    child.stderr.on('data', (data) => {
+      console.error(`child stderr:\n${data}`);
+    });
+
+    fs.unlinkSync('files/input.mid'); //remove input
+
   });
   form.on("end", () => {
     console.log('sending response')
