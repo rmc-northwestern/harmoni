@@ -12,14 +12,14 @@ import java.util.*;
 public class ah {
     public static void main(String[] args) {
         try {
-            Sequencer sequencer = MidiSystem.getSequencer(); // Get the default Sequencer
-            if (sequencer == null) {
-                System.err.println("Sequencer device not supported");
-                return;
-            }
-            sequencer.open(); // Open device
+            //Sequencer sequencer = MidiSystem.getSequencer(); // Get the default Sequencer
+            //if (sequencer == null) {
+               // System.err.println("Sequencer device not supported");
+                //return;
+            //}
+            //sequencer.open(); // Open device
             // Create sequence, the File must contain MIDI file data.
-            Sequence sequence = MidiSystem.getSequence(new File("jingle_bells.mid"));
+            Sequence sequence = MidiSystem.getSequence(new File("test_simple.mid"));
 
             Track[] a = sequence.getTracks();
             Track track1 = a[0];
@@ -59,8 +59,9 @@ public class ah {
             }*/
 
 
-        } catch (MidiUnavailableException | InvalidMidiDataException | IOException ex) {
+        } catch (InvalidMidiDataException | IOException ex) {
             ex.printStackTrace();
         }
+        //MidiUnavailableException
     }
 }

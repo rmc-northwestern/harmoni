@@ -46,7 +46,11 @@ public class soundTest{
                 mChannels[0].noteOff(three);//turn of the note
                 mChannels[0].noteOff(five);//turn of the note
             }
-        }catch (MidiUnavailableException e) {}
+            midiSynth.close();
+        }
+        catch (MidiUnavailableException e) {}
+
+
 
 
 
