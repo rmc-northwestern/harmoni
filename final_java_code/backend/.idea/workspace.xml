@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd20393-721d-4212-bf06-1d241c8e43d9" name="Default Changelist" comment="" />
+    <list default="true" id="4cd20393-721d-4212-bf06-1d241c8e43d9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,12 +12,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ah.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-575">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="30">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/MidiParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -24,21 +38,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/company/MidiParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Chord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1689">
+            <state relative-caret-position="-2423">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
@@ -47,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Note.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-401">
+            <state relative-caret-position="30">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
@@ -56,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/soundTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="495">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -65,8 +67,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+            <state relative-caret-position="197">
+              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/WriteMidi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-53">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/MidiFileWriter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-577">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,6 +119,8 @@
         <option value="$PROJECT_DIR$/src/com/company/ah.java" />
         <option value="$PROJECT_DIR$/src/com/company/MidiParser.java" />
         <option value="$PROJECT_DIR$/src/com/company/soundTest.java" />
+        <option value="$PROJECT_DIR$/src/com/company/WriteMidi.java" />
+        <option value="$PROJECT_DIR$/src/com/company/MidiFileWriter.java" />
       </list>
     </option>
   </component>
@@ -109,13 +137,17 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="backend" type="b2602c69:ProjectViewProjectNode" />
@@ -132,12 +164,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552439286297" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552497184126" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -155,22 +188,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.soundTest">
-    <configuration name="Chord" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Chord" />
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MidiParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.MidiParser" />
+  <component name="RunManager" selected="Application.WriteMidi">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="backend" />
       <extension name="coverage">
         <pattern>
@@ -184,6 +204,19 @@
     </configuration>
     <configuration name="Note" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Note" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WriteMidi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.WriteMidi" />
       <module name="backend" />
       <extension name="coverage">
         <pattern>
@@ -224,17 +257,17 @@
     <list>
       <item itemvalue="Application.ah" />
       <item itemvalue="Application.Note" />
-      <item itemvalue="Application.MidiParser" />
       <item itemvalue="Application.soundTest" />
-      <item itemvalue="Application.Chord" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.WriteMidi" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WriteMidi" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Note" />
         <item itemvalue="Application.soundTest" />
         <item itemvalue="Application.ah" />
-        <item itemvalue="Application.Chord" />
-        <item itemvalue="Application.MidiParser" />
-        <item itemvalue="Application.Note" />
       </list>
     </recent_temporary>
   </component>
@@ -251,17 +284,19 @@
       <workItem from="1552339532217" duration="353000" />
       <workItem from="1552340061313" duration="811000" />
       <workItem from="1552340939818" duration="263000" />
+      <workItem from="1552439445000" duration="277000" />
+      <workItem from="1552494845802" duration="1885000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3513000" />
+    <option name="totallyTimeSpent" value="5924000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="9" y="23" width="1400" height="760" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2569956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -270,15 +305,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32934132" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21407185" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21856287" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997006" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32934132" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -317,24 +352,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ah.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="30">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/MidiParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -343,32 +374,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/soundTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+        <state relative-caret-position="495">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Chord.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1689">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="-5937">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/MidiFileWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-577">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/WriteMidi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-53">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Note.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-401">
+        <state relative-caret-position="30">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/MidiParser.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="197">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Chord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2423">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
