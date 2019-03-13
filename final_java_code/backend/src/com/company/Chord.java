@@ -194,20 +194,46 @@ public class Chord {
         String num = number;
         double[] probs = progression.get(num);
         Chord[] options = note.get_chords(60, "major");
-        //for(int i = 0; i < options.length; i++){System.out.println(options[i]);}
+        //for(int i = 0; i < options.length; i++){System.out.println(options[i].number);}
 
 
         //generate "random" based on probabilities
         Random rand = new Random();
         int r = rand.nextInt(100) + 1;
+        System.out.println(r);
 
         int next = 0;
-        int total = 0;
-        for (int i = 0; i < 7; i++) {
-            if (r / 100 <= total + probs[i]) {
-                next = i;
+        double total = 0;
+
+        for(Chord option : options) {
+            System.out.println(option.number);
+            int index = -1;
+            if(option.number == "i"){
+                index = 0;
             }
-            total += probs[i];
+            else if(option.number == "ii"){
+                index = 1;
+            }
+            else if(option.number == "iii"){
+                index = 2;
+            }
+            else if(option.number == "iv"){
+                index = 3;
+            }
+            else if(option.number == "v"){
+                index = 4;
+            }
+            else if(option.number == "vi"){
+                index = 5;
+            }
+            else if(option.number == "vii"){
+                index = 6;
+            }
+
+            if ((double) r / 100 <= total + probs[index]) {
+                next = index; break;
+            }
+            total += probs[index];
         }
 
         Chord next_chord = new Chord();
@@ -239,10 +265,11 @@ public class Chord {
         c.number = "i";
         c.key = 60;
 
-        Note e = new Note();
-        e.letter = "e";
-        e.midi_num = 64;
+        Note g = new Note();
+        g.letter = "g";
+        g.midi_num = 67;
 
-        c.get_next(e, 60);
+        Chord next = c.get_next(g, 60);
+        System.out.println("next number " + next.number);
     }
 }
