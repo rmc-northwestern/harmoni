@@ -14,7 +14,7 @@ server.use(cors(corsOptions));
 server.post("/upload", upload);
 
 server.get('/download', function(req, res){
-  var file = 'files/result.txt'
+  var file = 'result.txt'
   res.download(file); // Set disposition and send it.
 });
 
