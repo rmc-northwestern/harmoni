@@ -10,7 +10,7 @@ import javax.sound.midi.spi.*;
 import java.util.*;
 
 public class MidiParser {
-    public int[] get_notes() {
+    public int[] get_notes(String path) {
         try {
             Sequencer sequencer = MidiSystem.getSequencer(); // Get the default Sequencer
             if (sequencer == null) {
@@ -19,7 +19,7 @@ public class MidiParser {
             }
             sequencer.open(); // Open device
             // Create sequence, the File must contain MIDI file data.
-            Sequence sequence = MidiSystem.getSequence(new File("test_simple.mid"));
+            Sequence sequence = MidiSystem.getSequence(new File(path));
 
             Track[] a = sequence.getTracks();
             Track track1 = a[0];
