@@ -172,20 +172,77 @@ public class Chord {
         else{return new int[]{0};}
     }
 
-    /*public Chord get_next(Chord previous){
+    public Chord get_next(Note note, int key) {
 
-        float[7][7] progression = new float[7][7];
-        progression[0] = new float[]{1,.13,0,.15,.62,.05,.05};
-        progression[1] = new float[]{.49,1,.01,0,.40,.01,.09};
-        progression[2] = new float[]{.67,0,1,0,0,.33,0};
-        progression[3] = new float[]{.64,.14,0,0,.15,0,.07};
-        progression[4] = new float[]{.94,0,0,.01,1,.04,.01};
-        progression[5] = new float[]{.11,.51,0,.14,.20,1,.04};
-        progression[6] = new float[]{.82,0,.01,.01,.16,0,1};
-    }*/
+        Map<String, double[]> progression = new HashMap<String, double[]>();
+        /*progression.put("i", new double[]{0,.13,0,.15,.62,.05,.05});
+        progression.put("ii", new double[]{.49,0,.01,0,.40,.01,.09});
+        progression.put("iii", new double[]{.67,0,0,0,0,.33,0});
+        progression.put("iv", new double[]{.64,.14,0,0,.15,0,.07});
+        progression.put("v", new double[]{.94,0,0,.01,0,.04,.01});
+        progression.put("vi", new double[]{.11,.51,0,.14,.20,0,.04});
+        progression.put("vii", new double[]{.82,0,.01,.01,.16,0,0});*/
+
+        progression.put("i", new double[]{.5, 0, 0, .15, .35, 0, 0});
+        progression.put("ii", new double[]{.2, .5, 0, 0, .3, 0, 0});
+        progression.put("iii", new double[]{.4, 0, .5, 0, 0, .1, 0});
+        progression.put("iv", new double[]{.2, .1, 0, .5, .2, 0, 0});
+        progression.put("v", new double[]{.4, 0, 0, .01, .5, 0, .0});
+        progression.put("vi", new double[]{0, .3, 0, 0, .2, .5, 0});
+        progression.put("vii", new double[]{.8, 0, 0, 0, .2, 0, 0});
+
+        String num = number;
+        double[] probs = progression.get(num);
+        Chord[] options = note.get_chords(60, "major");
+        //for(int i = 0; i < options.length; i++){System.out.println(options[i]);}
+
+
+        //generate "random" based on probabilities
+        Random rand = new Random();
+        int r = rand.nextInt(100) + 1;
+
+        int next = 0;
+        int total = 0;
+        for (int i = 0; i < 7; i++) {
+            if (r / 100 <= total + probs[i]) {
+                next = i;
+            }
+            total += probs[i];
+        }
+
+        Chord next_chord = new Chord();
+        if (next == 0) {
+            next_chord.number = "i";
+        } else if (next == 1) {
+            next_chord.number = "ii";
+        } else if (next == 2) {
+            next_chord.number = "iii";
+        } else if (next == 3) {
+            next_chord.number = "iv";
+        } else if (next == 4) {
+            next_chord.number = "v";
+        } else if (next == 5) {
+            next_chord.number = "vi";
+        } else if (next == 6) {
+            next_chord.number = "vii";
+        }
+
+        next_chord.key = key;
+
+        return next_chord;
+    }
 
 
 
     public static void main(String[] args) {
+        Chord c = new Chord();
+        c.number = "i";
+        c.key = 60;
+
+        Note e = new Note();
+        e.letter = "e";
+        e.midi_num = 64;
+
+        c.get_next(e, 60);
     }
 }
