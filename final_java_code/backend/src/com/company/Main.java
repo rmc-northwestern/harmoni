@@ -13,9 +13,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-    public int[][] chords_from_midi(){
+    public int[][] chords_from_midi(String path){
         MidiParser mp = new MidiParser();
-        int[] notes = mp.get_notes();
+        int[] notes = mp.get_notes(path);
 
         int[][] out = new int[notes.length][3];
 
@@ -33,9 +33,9 @@ public class Main {
         return out;
     }
 
-    public void nums_from_midi(){
+    public void nums_from_midi(String path){
         MidiParser mp = new MidiParser();
-        int[] notes = mp.get_notes();
+        int[] notes = mp.get_notes(path);
 
         String out = "";
 
@@ -95,7 +95,7 @@ public class Main {
     public static void main(String[] args) {
 
         Main m = new Main();
-        m.nums_from_midi();
+        m.nums_from_midi(args[0]);
         //int[][] result = m.chords_from_midi();
 
         /*System.out.println(result[0][0]);
