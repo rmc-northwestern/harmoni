@@ -42,13 +42,31 @@ public class Note {
                 c = new Chord[] {iii, i, vi};
 
             }
+            else if(letter == "f"){
+                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
+                Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
+                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
+                c = new Chord[] {ii, iv, vii};
+            }
             else if( letter == "g"){
                 Chord v = new Chord(); v.key=key-12; v.number="v";
                 Chord iii = new Chord(); iii.key=key-12; iii.number="iii";
                 Chord i = new Chord(); i.key=key-12; i.number="i";
                 c = new Chord[] {v, iii, i};
             }
-            else {c = new Chord[] {};}
+            else if(letter == "a"){
+                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
+                Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
+                Chord vi = new Chord(); vi.key = key-12; vi.number = "vi";
+                c = new Chord[] {ii, iv, vi};
+            }
+            else {
+                //letter == "b" -- no accidentals
+                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
+                Chord iii = new Chord(); iii.key = key-12; iii.number = "iii";
+                Chord v = new Chord(); v.key=key-12; v.number="v";
+                c = new Chord[] {vii, iii, v};
+            }
         }
         else {c = new Chord[] {};}
         chords = c;

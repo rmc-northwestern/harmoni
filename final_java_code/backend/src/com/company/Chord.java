@@ -194,47 +194,59 @@ public class Chord {
         String num = number;
         double[] probs = progression.get(num);
         Chord[] options = note.get_chords(60, "major");
-        //for(int i = 0; i < options.length; i++){System.out.println(options[i].number);}
-
+        System.out.println("options " + options[0].number + " " + options[1].number + " " + options[2].number);
 
         //generate "random" based on probabilities
         Random rand = new Random();
         int r = rand.nextInt(100) + 1;
-        System.out.println(r);
+        //System.out.println(r);
 
-        int next = 0;
-        double total = 0;
+        int next = -1;
 
-        for(Chord option : options) {
-            System.out.println(option.number);
-            int index = -1;
-            if(option.number == "i"){
-                index = 0;
-            }
-            else if(option.number == "ii"){
-                index = 1;
-            }
-            else if(option.number == "iii"){
-                index = 2;
-            }
-            else if(option.number == "iv"){
-                index = 3;
-            }
-            else if(option.number == "v"){
-                index = 4;
-            }
-            else if(option.number == "vi"){
-                index = 5;
-            }
-            else if(option.number == "vii"){
-                index = 6;
-            }
+        int[] int_options = new int[options.length];
 
-            if ((double) r / 100 <= total + probs[index]) {
-                next = index; break;
+        //index of chord in progression array
+        for(int j = 0; j < options.length; j++){
+            if(options[j].number == "i"){
+                int_options[j] = 0;
             }
-            total += probs[index];
+            else if(options[j].number == "ii"){
+                int_options[j] = 1;
+            }
+            else if(options[j].number == "iii"){
+                int_options[j] = 2;
+            }
+            else if(options[j].number == "iv"){
+                int_options[j] = 3;
+            }
+            else if(options[j].number == "v"){
+                int_options[j] = 4;
+            }
+            else if(options[j].number == "vi"){
+                int_options[j] = 5;
+            }
+            else if(options[j].number == "vii"){
+                int_options[j] = 6;
+            }
         }
+        System.out.println("int_options " + int_options[0] + " " + int_options[1] + " " + int_options[2]);
+
+        double[] options_probs = new double[int_options.length];
+        int max_idx = -1;
+        double max = -1;
+        for(int i = 0; i < int_options.length; i++){
+            options_probs[i] = probs[int_options[i]];
+            if(options_probs[i] > max){
+                max = options_probs[i];
+                max_idx = int_options[i];
+            }
+        }
+        System.out.println("options_probs " + options_probs[0] + " " + options_probs[1] + " " + options_probs[2]);
+        System.out.println("max " + max);
+        System.out.println("man_idx" + max_idx);
+        next = max_idx;
+
+
 
         Chord next_chord = new Chord();
         if (next == 0) {
@@ -261,15 +273,15 @@ public class Chord {
 
 
     public static void main(String[] args) {
-        Chord c = new Chord();
-        c.number = "i";
-        c.key = 60;
+        Chord f = new Chord();
+        f.number = "iv";
+        f.key = 60;
 
         Note g = new Note();
         g.letter = "g";
         g.midi_num = 67;
 
-        Chord next = c.get_next(g, 60);
+        Chord next = f.get_next(g, 60);
         System.out.println("next number " + next.number);
     }
 }
