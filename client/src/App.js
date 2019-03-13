@@ -3,17 +3,44 @@ import './App.css';
 import Upload from './upload/Upload';
 import Nav from './Nav'
 import Loading from './Loading'
+import Tone from 'tone';
+import SoundGrid from './SoundGrid';
+import PlayToggleButton from './PlayToggleButton';
+
+var synth = new Tone.PluckSynth().toMaster()
 
 class App extends Component {
 
   constructor(props){
     super(props);
+    Tone.Transport.schedule(this.triggerSynth, 0);
+    Tone.Transport.schedule(this.triggerSynth, '0:2');
+    Tone.Transport.schedule(this.triggerSynth, '0:2:2.5');
+    Tone.Transport.loopEnd = '1m';
+    Tone.Transport.loop = true;
+    // Tone.Transport.start('+0.0');
     this.state = {
       upload:false,
       loading:false,
-      complete:false
+      complete:false,
+      playing:false
     }
   }
+
+  triggerSynth(time) {
+   synth.triggerAttackRelease('C2', '8n', time);
+  }
+
+ togglePlaying() {
+   if (this.state.playing) {
+     this.setState({playing: false });
+     Tone.Transport.stop();
+   } else {
+     this.setState({ playing: true });
+     Tone.Transport.start('+0.0');
+   }
+ }
+
 
   closeUpload(closebutton){
     if (closebutton === true){
@@ -117,6 +144,11 @@ class App extends Component {
               <a href='http://localhost:8000/download'>
                 <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
               </a>
+              <SoundGrid />
+              <PlayToggleButton
+                togglePlaying={this.togglePlaying.bind(this)}
+                isPlaying={this.state.playing}
+              />
             </div>
 
           </header>
