@@ -37,6 +37,7 @@ public class Main {
         MidiParser mp = new MidiParser();
         int[] notes = mp.get_notes(path);
 
+
         String out = "";
 
         Chord current = new Chord(); current.number = "i"; current.key = 60;
@@ -93,10 +94,10 @@ public class Main {
 
 
     public static void main(String[] args) {
+        args = new String[]{"test_simple.mid"};
 
         Main m = new Main();
         m.nums_from_midi(args[0]);
-        //int[][] result = m.chords_from_midi();
 
         /*System.out.println(result[0][0]);
         System.out.println(result[0][1]);

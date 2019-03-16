@@ -38,6 +38,7 @@ public class MidiParser {
                     i++;
                 }
             }
+            System.out.println(x.length);
             return x;
 
         } catch (MidiUnavailableException | InvalidMidiDataException | IOException ex) {

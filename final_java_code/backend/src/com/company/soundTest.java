@@ -5,7 +5,7 @@ import javax.sound.midi.*;
 public class soundTest{
 
     public static void main(String[] args) {
-        try {
+        /*try {
 
             Synthesizer midiSynth = MidiSystem.getSynthesizer();
             midiSynth.open();
@@ -48,7 +48,7 @@ public class soundTest{
             }
             midiSynth.close();
         }
-        catch (MidiUnavailableException e) {}
+        catch (MidiUnavailableException e) {}*/
 
 
 
