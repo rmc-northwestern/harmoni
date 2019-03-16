@@ -24,7 +24,9 @@ public class MidiParser {
             Track[] a = sequence.getTracks();
             Track track1 = a[0];
 
-            int[] x = new int[4];
+            int[] x = new int[]{};
+            int[] full;
+
             int i = 0;
             for (int k = 0; k < track1.size(); k++) {
                 MidiEvent event = track1.get(k);
@@ -33,8 +35,14 @@ public class MidiParser {
                 String s1 = String.format("%8s", Integer.toBinaryString(data[0] & 0xFF)).replace(' ', '0');
                 String s2 = "1001";
                 if (s1.startsWith(s2)) {
-                    //System.out.println(k + " is the index of k. The note is: " +  + data[1] + "and the velocity is: " + data[2]);
-                    x[i] = data[1];
+                    System.out.println(k + " is the index of k. The note is: " +  + data[1] + "and the velocity is: " + data[2]);
+
+                    full = new int[x.length + 1];
+                    System.arraycopy(x, 0, full, 0, x.length);
+                    full[full.length-1] = data[1];
+
+
+                    x = full;
                     i++;
                 }
             }

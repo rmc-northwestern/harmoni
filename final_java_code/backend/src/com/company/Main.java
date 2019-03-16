@@ -94,10 +94,18 @@ public class Main {
 
 
     public static void main(String[] args) {
-        args = new String[]{"test_simple.mid"};
+        //args = new String[]{"test_simple.mid"};
 
         Main m = new Main();
         m.nums_from_midi(args[0]);
+        /*int[] x = new int[]{};
+        int y = 4;
+        int[] newarray = new int[x.length + 1];
+        System.arraycopy(x, 0, newarray, 0, x.length);
+        newarray[newarray.length-1] = y;
+        for(int i = 0; i < newarray.length; i++){
+            System.out.println(newarray[i]);
+        }*/
 
         /*System.out.println(result[0][0]);
         System.out.println(result[0][1]);
