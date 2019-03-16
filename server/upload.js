@@ -19,7 +19,7 @@ module.exports = async function upload(req, res) {
     }
 
     console.log('running java on file ', inputFile)
-    var child = await require('child_process').spawn('java',['-jar', 'files/test.jar', inputFile]);
+    var child = await require('child_process').spawn('java',['-jar', 'files/backend.jar']);
 
     child.stdout.on('data', (data) => {
       console.log(`child stdout:\n${data}`);
