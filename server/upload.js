@@ -10,7 +10,7 @@ module.exports = async function upload(req, res) {
     // you can access it using file.path
     // console.log(file.path)
 
-    inputFile = 'files/input.mid'
+    inputFile = 'input.mid'
     fs.copyFile(file.path,inputFile,console.log)
 
     //check for existing test file to make sure an old one isnt returned
@@ -19,7 +19,7 @@ module.exports = async function upload(req, res) {
     }
 
     console.log('running java on file ', inputFile)
-    var child = await require('child_process').spawn('java',['-jar', 'files/backend.jar']);
+    var child = await require('child_process').spawn('java',['-jar', 'files/backend.jar', inputFile]);
 
     child.stdout.on('data', (data) => {
       console.log(`child stdout:\n${data}`);
@@ -29,7 +29,7 @@ module.exports = async function upload(req, res) {
       console.error(`child stderr:\n${data}`);
     });
 
-    fs.unlinkSync('files/input.mid'); //remove input
+    // fs.unlinkSync('files/input.mid'); //remove input
 
   });
   form.on("end", () => {
