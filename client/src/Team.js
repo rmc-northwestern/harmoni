@@ -39,7 +39,7 @@ class Team extends Component {
       <div className="App">
         <header className="App-header">
           <Nav current='team'/>
-          <img src='/wave.gif' className="App-logo" alt="logo" />
+          <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
           <div className='title'>
             <span className='titleBlue'>&lt;</span>
             &nbsp;team&nbsp;
