@@ -10,7 +10,7 @@ class About extends Component {
       <div className="App">
         <header className="App-header">
           <Nav current='about'/>
-          <img src='/wave.gif' className="App-logo" alt="logo" />
+          <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
           <div style={{height: '60px'}}></div>
           <div className='title'>
             <span className='titleBlue'>&lt;</span>

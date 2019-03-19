@@ -78,7 +78,7 @@ class Upload extends Component {
       const formData = new FormData();
       formData.append("file", file, this.state.key);
 
-      req.open("POST", "http://54.197.199.36:8000/upload");
+      req.open("POST", "http://localhost:8000/upload");
       req.send(formData);
 
     });
@@ -129,7 +129,6 @@ class Upload extends Component {
 
   async selectKey(key){
     await this.setState({key:key})
-    console.log('state of key is: ', this.state.key)
   }
 
   keyStyle(key){
