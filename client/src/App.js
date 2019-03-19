@@ -74,6 +74,8 @@ class App extends Component {
                 </div>
               </div>
               <br/>
+
+              <br/>
               <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
             </div>
 

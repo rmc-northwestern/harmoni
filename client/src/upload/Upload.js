@@ -26,6 +26,10 @@ class Upload extends Component {
   }
 
   async uploadFiles() {
+    if (!this.state.key){
+      alert('Whoops! Make sure to select a key!')
+      return
+    }
     this.setState({ uploadProgress: {}, uploading: true });
     const promises = [];
     this.state.files.forEach(file => {
@@ -72,11 +76,10 @@ class Upload extends Component {
       });
 
       const formData = new FormData();
-      formData.append("file", file, file.name);
+      formData.append("file", file, this.state.key);
 
       req.open("POST", "http://localhost:8000/upload");
       req.send(formData);
-      window.setTimeout(()=>{console.log(req.response)},2000)
 
     });
   }
@@ -124,6 +127,43 @@ class Upload extends Component {
     }
   }
 
+  async selectKey(key){
+    await this.setState({key:key})
+    console.log('state of key is: ', this.state.key)
+  }
+
+  keyStyle(key){
+    if (key.length == 1){
+      return this.state.key == key ? 'whiteKey selectedKey' : 'whiteKey'
+    }
+    return this.state.key == key ? 'blackKey selectedKey' : 'blackKey'
+  }
+
+  renderPiano(){
+    if (this.state.files.length > 0){
+      return(
+        <div>
+          <div>Choose the major key signature...&nbsp;<b style={{color: '#B80F42', fontSize:'1.2em'}}>{this.state.key}</b></div>
+          <div className='pianoContainer'>
+            <div className={this.keyStyle('C')} onClick={()=>this.selectKey('C')}></div>
+            <div className={this.keyStyle('D')} onClick={()=>this.selectKey('D')}></div>
+            <div className={this.keyStyle('E')} onClick={()=>this.selectKey('E')}></div>
+            <div className={this.keyStyle('F')} onClick={()=>this.selectKey('F')}></div>
+            <div className={this.keyStyle('G')} onClick={()=>this.selectKey('G')}></div>
+            <div className={this.keyStyle('A')} onClick={()=>this.selectKey('A')}></div>
+            <div className={this.keyStyle('B')} onClick={()=>this.selectKey('B')}></div>
+
+            <div className={this.keyStyle('Db')} id='Db' onClick={()=>this.selectKey('Db')}></div>
+            <div className={this.keyStyle('Eb')} id='Eb' onClick={()=>this.selectKey('Eb')}></div>
+            <div className={this.keyStyle('Gb')} id='Gb' onClick={()=>this.selectKey('Gb')}></div>
+            <div className={this.keyStyle('Ab')} id='Ab' onClick={()=>this.selectKey('Ab')}></div>
+            <div className={this.keyStyle('Bb')} id='Bb' onClick={()=>this.selectKey('Bb')}></div>
+          </div>
+      </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="Upload">
@@ -145,6 +185,8 @@ class Upload extends Component {
                 </div>
               );
             })}
+
+            {this.renderPiano()}
           </div>
         </div>
         <div className="Actions">{this.renderActions()}</div>

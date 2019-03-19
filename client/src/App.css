@@ -176,3 +176,59 @@ input{
   box-shadow: 1px 1px 0px -10px #ccc;
   cursor: pointer;
 }
+
+.pianoContainer{
+  display: inline-block;
+  position: relative;
+  width: 283px;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #B80F42;
+  margin: 10px;
+}
+
+.whiteKey{
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border-right: 1px solid #ccc;
+  width: 40px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.selectedKey{
+  background: #68a2ff !important;
+}
+
+.blackKey{
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 60px;
+  background: #B80F42;
+  border-radius: 0px 0px 5px 5px;
+}
+
+#Db{
+  left: 30px;
+}
+
+#Eb{
+  left: 70px;
+}
+
+#Gb{
+  left: 155px;
+}
+
+#Ab{
+  left: 195px;
+}
+
+#Bb{
+  left: 235px;
+}
