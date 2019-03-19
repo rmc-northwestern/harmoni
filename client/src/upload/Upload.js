@@ -78,7 +78,7 @@ class Upload extends Component {
       const formData = new FormData();
       formData.append("file", file, this.state.key);
 
-      req.open("POST", "http://localhost:8000/upload");
+      req.open("POST", "http://54.197.199.36:8000/upload");
       req.send(formData);
 
     });
@@ -133,10 +133,10 @@ class Upload extends Component {
   }
 
   keyStyle(key){
-    if (key.length == 1){
-      return this.state.key == key ? 'whiteKey selectedKey' : 'whiteKey'
+    if (key.length === 1){
+      return this.state.key === key ? 'whiteKey selectedKey' : 'whiteKey'
     }
-    return this.state.key == key ? 'blackKey selectedKey' : 'blackKey'
+    return this.state.key === key ? 'blackKey selectedKey' : 'blackKey'
   }
 
   renderPiano(){
