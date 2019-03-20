@@ -7,80 +7,52 @@ import javax.sound.midi.*; // package for all midi classes
 public class WriteMidi {
     public static void main(String argv[]) {
         System.out.println("midifile begin ");
-        try
-        {
-//****  Create a new MIDI sequence with 24 ticks per beat  ****
-            Sequence s = new Sequence(javax.sound.midi.Sequence.PPQ,24);
+        try {
+            Sequence sequence = MidiSystem.getSequence(new File("test_simple.mid"));
 
-//****  Obtain a MIDI track from the sequence  ****
-            Track t = s.createTrack();
+            Track[] a = sequence.getTracks();
+            Track track1 = a[0];
+            Track [] t_arr = new Track[3];
+            Track one = a[0];
+            Track three = a[0];
+            Track five = a[0];
+            t_arr[0] = one;
+            t_arr[1] = three;
+            t_arr[2] = five;
 
-//****  General MIDI sysex -- turn on General MIDI sound set  ****
-            byte[] b = {(byte)0xF0, 0x7E, 0x7F, 0x09, 0x01, (byte)0xF7};
-            SysexMessage sm = new SysexMessage();
-            sm.setMessage(b, 6);
-            MidiEvent me = new MidiEvent(sm,(long)0);
-            t.add(me);
+            for (int i =0; i<t_arr.length;i++) {
+                for (int k = 0; k < t_arr[i].size(); k++) {
+                    MidiEvent event = track1.get(k);
+                    MidiMessage msg = event.getMessage();
+                    byte[] data = msg.getMessage();
+                    for (int j = 0; j < data.length; j++) {
+                        String s1 = String.format("%8s", Integer.toBinaryString(data[j] & 0xFF)).replace(' ', '0');
+                        String s2 = "1001";
+                        String s3 = "1000";
+                        if (s1.startsWith(s2)) {
+                            data[j] = 60;
+                            System.out.println(k + " is the index of k. The note is: " + +data[1] + "and the velocity is: " + data[2]);
 
-//****  set tempo (meta event)  ****
-            MetaMessage mt = new MetaMessage();
-            byte[] bt = {0x02, (byte)0x00, 0x00};
-            mt.setMessage(0x51 ,bt, 3);
-            me = new MidiEvent(mt,(long)0);
-            t.add(me);
+                        }
+                        if (s1.startsWith(s3)) {
+                            data[j] = 60;
+                        }
 
-//****  set track name (meta event)  ****
-            mt = new MetaMessage();
-            String TrackName = new String("midifile track");
-            mt.setMessage(0x03 ,TrackName.getBytes(), TrackName.length());
-            me = new MidiEvent(mt,(long)0);
-            t.add(me);
+                    }
+                    sequence.createTrack().add(event);
+                }
+            }
 
-//****  set omni on  ****
-            ShortMessage mm = new ShortMessage();
-            mm.setMessage(0xB0, 0x7D,0x00);
-            me = new MidiEvent(mm,(long)0);
-            t.add(me);
 
-//****  set poly on  ****
-            mm = new ShortMessage();
-            mm.setMessage(0xB0, 0x7F,0x00);
-            me = new MidiEvent(mm,(long)0);
-            t.add(me);
+                    File f = new File("midifiler.mid");
 
-//****  set instrument to Piano  ****
-            mm = new ShortMessage();
-            mm.setMessage(0xC0, 0x00, 0x00);
-            me = new MidiEvent(mm,(long)0);
-            t.add(me);
+                    MidiSystem.write(sequence, 1, f);
+        }
+        catch(InvalidMidiDataException | IOException ex){
+                ex.printStackTrace();
+            }
 
-//****  note on - middle C  ****
-            mm = new ShortMessage();
-            mm.setMessage(0x90,0x3C,0x60);
-            me = new MidiEvent(mm,(long)1);
-            t.add(me);
 
-//****  note off - middle C - 120 ticks later  ****
-            mm = new ShortMessage();
-            mm.setMessage(0x80,0x3C,0x40);
-            me = new MidiEvent(mm,(long)121);
-            t.add(me);
-
-//****  set end of track (meta event) 19 ticks later  ****
-            mt = new MetaMessage();
-            byte[] bet = {}; // empty array
-            mt.setMessage(0x2F,bet,0);
-            me = new MidiEvent(mt, (long)140);
-            t.add(me);
-
-//****  write the MIDI sequence to a MIDI file  ****
-            File f = new File("midifile.mid");
-            MidiSystem.write(s,1,f);
-        } //try
-        catch(Exception e)
-        {
-            System.out.println("Exception caught " + e.toString());
-        } //catch
         System.out.println("midifile end ");
     } //main
 } //midifile
