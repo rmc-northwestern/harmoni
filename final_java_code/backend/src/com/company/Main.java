@@ -13,22 +13,101 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
-    public int[][] chords_from_midi(String path){
+    public int[][] chords_from_midi(String path, String note_name){
         MidiParser mp = new MidiParser();
         int[] notes = mp.get_notes(path);
 
         int[][] out = new int[notes.length][3];
 
-        Chord current = new Chord(); current.number = "i"; current.key = 60;
-        for(int i = 0; i < notes.length; i++){
-            int note = notes[i];
-            Note n = new Note(); n.midi_num = note; n.note_to_String();
-            System.out.println(n.letter);
+        //figure out here how to choose first chord
+        int key = key_from_input(notes, note_name);
+        Chord current = new Chord(); current.number = "i"; current.key = key - 12;
+        out[0] = current.build_chord();
 
+        for(int i = 1; i < notes.length; i++){
+            System.out.println("current chord.number is " + current.number);
+            System.out.println("current chord.key is " + current.key);
+            int next_n = notes[i];
+            Note next_note = new Note(); next_note.midi_num = next_n; next_note.note_to_String();
+            System.out.println("next note is " + next_note.letter);
+
+            Chord next = current.get_next(next_note, key);
+            current = next;
             out[i] = current.build_chord();
 
-            Chord next = current.get_next(n, 60);
-            current = next;
+
+            //System.out.println("next.number is " + next.number);
+            //System.out.println("next.key is " + next.key);
+            //current = next;
+        }
+        return out;
+    }
+
+    public int key_from_input(int[] notes, String note_name){
+        int min = notes[0];
+        int max = notes[0];
+        for(int i = 1; i < notes.length; i++){
+            if(notes[i] < min){
+                min = notes[i];
+            }
+            else if(notes[i] > max){
+                max = notes[i];
+            }
+        }
+        return note_in_range(note_name, min, max);
+    }
+
+    public int note_in_range(String note_name, int min, int max){
+        int out = 0;
+        int subtract = 0;
+        if(note_name == "A"){
+            subtract = 21;
+        }
+        else if(note_name == "Bb"){
+            subtract = 22;
+        }
+        else if(note_name == "B"){
+            subtract = 23;
+        }
+        else if(note_name == "C"){
+            subtract = 24;
+        }
+        else if(note_name == "Db"){
+            subtract = 25;
+        }
+        else if(note_name == "D"){
+            subtract = 26;
+        }
+        else if(note_name == "Eb"){
+            subtract = 27;
+        }
+        else if(note_name == "E"){
+            subtract = 28;
+        }
+        else if(note_name == "F"){
+            subtract = 29;
+        }
+        else if(note_name == "Gb"){
+            subtract = 30;
+        }
+        else if(note_name == "G"){
+            subtract = 31;
+        }
+        else { //a flat
+            subtract = 32;
+        }
+
+        for(int i = min; i <= max; i++){
+            if((i - subtract) % 12 == 0){
+                out = i;
+            }
+        }
+        if(out == 0){
+            int i = min -1;
+            while((i - 24) % 12 != 0){
+                i--;
+            }
+            out = i;
         }
         return out;
     }
@@ -40,13 +119,13 @@ public class Main {
 
         String out = "";
 
-        Chord current = new Chord(); current.number = "i"; current.key = 60;
+        Chord current = new Chord(); current.number = "i"; current.key = 48;
         for(int i = 0; i < notes.length; i++){
             int note = notes[i];
             Note n = new Note(); n.midi_num = note; n.note_to_String();
 
 
-            Chord next = current.get_next(n, 60);
+            Chord next = current.get_next(n, 48);
             out = out + next.number + " ";
             current = next;
         }
@@ -97,60 +176,14 @@ public class Main {
         //args = new String[]{"test_simple.mid"};
 
         Main m = new Main();
-        m.nums_from_midi(args[0]);
-        /*int[] x = new int[]{};
-        int y = 4;
-        int[] newarray = new int[x.length + 1];
-        System.arraycopy(x, 0, newarray, 0, x.length);
-        newarray[newarray.length-1] = y;
-        for(int i = 0; i < newarray.length; i++){
-            System.out.println(newarray[i]);
-        }*/
+        //m.nums_from_midi(args[0]);
 
-        /*System.out.println(result[0][0]);
-        System.out.println(result[0][1]);
-        System.out.println(result[0][2]);*/
 
-        /*System.out.println(result[1][0]);
-        System.out.println(result[1][1]);
-        System.out.println(result[1][2]);*/
-
-        /*System.out.println(result[2][0]);
-        System.out.println(result[2][1]);
-        System.out.println(result[2][2]);*/
-
-        /*System.out.println(result[3][0]);
-        System.out.println(result[3][1]);
-        System.out.println(result[3][2]);*/
-
-        Note c = new Note();
-        c.midi_num = 60;
-        //System.out.println(c.get_chords(60, "major")[1].number);
-
-        /*Chord ch = new Chord();
-        ch.number = "i";
-        ch.key = 66;
-
-        Note e = new Note();
-        e.midi_num = 64;
-
-        System.out.println(e.get_chords(60, "major")[0].number);*/
-        /*c.note_to_String();
-        System.out.println(c.letter);
-
-        Chord[] test = c.get_chords(60, "major");
-        System.out.println(test[0].number);
-        System.out.println(test[1].number);
-        System.out.println(test[2].number);
-
-        Chord i = test[0];
-        Chord vi = test[1];
-        Chord iv = test[2];
-
-        System.out.println(i.build_chord()[0]);
-        System.out.println(vi.build_chord()[0]);
-        System.out.println(iv.build_chord()[0]);*/
-
+        int[][] test = m.chords_from_midi("test_simple.mid", "C");
+        System.out.printf("%d %d %d", test[0][0], test[0][1], test[0][2]);
+        System.out.printf("%d %d %d", test[1][0], test[1][1], test[1][2]);
+        System.out.printf("%d %d %d", test[2][0], test[2][1], test[2][2]);
+        System.out.printf("%d %d %d", test[3][0], test[3][1], test[3][2]);
 
     }
 }
