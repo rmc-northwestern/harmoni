@@ -48,7 +48,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Nav current='home'/>
-            <img src='/wave.gif' className="App-logo" alt="logo" />
+            <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
             <div className='title'>
               <span className='titleBlue'>&lt;</span>
               &nbsp;harmoni&nbsp;
@@ -74,6 +74,8 @@ class App extends Component {
                 </div>
               </div>
               <br/>
+
+              <br/>
               <button className='buttonPrimary' onClick={()=>this.setState({upload:true})}>HARMONIZE</button>
             </div>
 
@@ -90,7 +92,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Nav current='home'/>
-            <img src='/wave.gif' className="App-logo" alt="logo" />
+            <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
 
             <div className='cardContainer'>
               <Loading/>
@@ -106,7 +108,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Nav current='home'/>
-            <img src='/wave.gif' className="App-logo" alt="logo" />
+            <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
             <div className='title'>
               <span className='titleBlue'>&lt;</span>
               &nbsp;complete&nbsp;

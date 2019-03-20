@@ -1,0 +1,42 @@
+.group{
+  max-height:200px;
+  filter: grayscale(100%);
+  opacity: .4;
+  z-index: 999;
+  object-fit: fill;
+  transition: all .5s ease-out;
+  border-radius: 10px;
+}
+
+.group:hover{
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.tint{
+  height: 200px;
+  max-width: 40%;
+  display: inline-block;
+  background: #B80F42;
+  z-index: 990;
+  transition: all .5s ease-out;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin-top: 40px;
+}
+
+.tint:hover{
+  background: transparent;
+}
+
+.bodyText{
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  color: white;
+  font-size: 10pt;
+  font-weight: 100;
+  vertical-align: middle;
+  padding: 20px;
+}
