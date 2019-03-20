@@ -8,8 +8,9 @@ module.exports = async function upload(req, res) {
     // Do something with the file
     // e.g. save it to the database
     // you can access it using file.path
-    const key = file.name
-    console.log('key is ', key, ' Major')
+    const key = file.name.substring(0,1)
+    const keytype = file.name.substring(1)
+    console.log('key is ', key, ' type is ', keytype)
 
     inputFile = 'input.mid'
     fs.copyFile(file.path,inputFile,console.log)
