@@ -15,59 +15,62 @@ public class Note {
         String letter = note_to_String();
         Note k = new Note(); k.midi_num = key; k.note_to_String();
 
-        //just ask for note number in key of note and get chords based on that
+
 
         Chord[] c;
+        Chord i = new Chord(); i.key = key-12; i.number = "i";
+        Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
+        Chord iii = new Chord(); iii.key = key-12; iii.number = "iii";
+        Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
+        Chord v = new Chord(); v.key = key-12; v.number = "v";
+        Chord vi = new Chord(); vi.key = key-12; vi.number = "vi";
+        Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
 
+
+        //just ask for note number in key of note and get chords based on that
         if(k.letter == "c"){ //in the key of c
+
             if(letter == "c"){
 
-                Chord i = new Chord(); i.key = key-12; i.number = "i";
-                Chord vi = new Chord(); vi.key = key-12; vi.number = "vi";
-                Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
                 c = new Chord[] {i, vi, iv};
 
             }
             else if(letter == "d"){
-                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
-                Chord v = new Chord(); v.key = key-12; v.number = "v";
-                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
+
                 c = new Chord[] {ii, v, vii};
             }
             else if(letter == "e"){
 
-                Chord iii = new Chord(); iii.key = key-12; iii.number = "iii";
-                Chord i = new Chord(); i.key = key-12; i.number = "i";
-                Chord vi = new Chord(); vi.key = key-12; vi.number = "vi";
                 c = new Chord[] {iii, i, vi};
 
             }
             else if(letter == "f"){
-                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
-                Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
-                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
+
                 c = new Chord[] {ii, iv, vii};
             }
             else if( letter == "g"){
-                Chord v = new Chord(); v.key=key-12; v.number="v";
-                Chord iii = new Chord(); iii.key=key-12; iii.number="iii";
-                Chord i = new Chord(); i.key=key-12; i.number="i";
+
                 c = new Chord[] {v, iii, i};
             }
             else if(letter == "a"){
-                Chord ii = new Chord(); ii.key = key-12; ii.number = "ii";
-                Chord iv = new Chord(); iv.key = key-12; iv.number = "iv";
-                Chord vi = new Chord(); vi.key = key-12; vi.number = "vi";
+
                 c = new Chord[] {ii, iv, vi};
             }
             else {
                 //letter == "b" -- no accidentals
-                Chord vii = new Chord(); vii.key = key-12; vii.number = "vii";
-                Chord iii = new Chord(); iii.key = key-12; iii.number = "iii";
-                Chord v = new Chord(); v.key=key-12; v.number="v";
+
                 c = new Chord[] {vii, iii, v};
             }
         }
+
+        else if (k. letter == "d") {
+            if(letter == "d") {c = new Chord[] {i, vi, iv};}
+            else if(letter == "e") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "f") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "g") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "a") {c = new Chord[] {v, iii, i};}
+            else if(letter == "b") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}} //letter was "c" -- no accidentals
         else {c = new Chord[] {};}
         chords = c;
         return c;
@@ -76,13 +79,17 @@ public class Note {
     public String note_to_String(){
 
         if((midi_num-21)%12 == 0) {letter = "a"; return "a";}
+        else if((midi_num-22)%12 == 0) {letter = "bb"; return "bb";}
         else if((midi_num-23)%12 == 0) {letter = "b"; return "b";}
         else if((midi_num-24)%12 == 0) {letter = "c"; return "c";}
+        else if((midi_num-25)%12 == 0) {letter = "db"; return "db";}
         else if((midi_num-26)%12 == 0) {letter = "d"; return "d";}
+        else if((midi_num-27)%12 == 0) {letter = "eb"; return "eb";}
         else if((midi_num-28)%12 == 0) {letter = "e"; return "e";}
         else if((midi_num-29)%12 == 0) {letter = "f"; return "f";}
+        else if((midi_num-30)%12 == 0) {letter = "gb"; return "gb";}
         else if((midi_num-31)%12 == 0) {letter = "g"; return "g";}
-        else {return "error: note not in key of c";}
+        else {letter = "ab"; return "ab";}
 
     }
 

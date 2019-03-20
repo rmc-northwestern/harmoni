@@ -6,6 +6,7 @@ public class Chord {
     public String number;
     public int key;
 
+
     //returns a 3-element int array with midi numbers for 1 3 and 5 of chord
     public int[] build_chord() {
 
@@ -13,6 +14,7 @@ public class Chord {
         k.midi_num = key;
         k.note_to_String();
 
+        //System.out.println("key is" + key);
         if (k.letter == "c") {
             Map<String, int[]> cmajor = new HashMap<String, int[]>();
             cmajor.put("i", new int[]{24, 28, 31});
@@ -24,6 +26,7 @@ public class Chord {
             cmajor.put("vii", new int[]{23, 26, 29});
 
             int[] ch = cmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         if (k.letter == "db") {
@@ -37,6 +40,7 @@ public class Chord {
             dbmajor.put("vii", new int[]{24, 27, 30});
 
             int[] ch = dbmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "d") {
@@ -50,6 +54,7 @@ public class Chord {
             dmajor.put("vii", new int[]{25, 28, 31});
 
             int[] ch = dmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "eb") {
@@ -63,6 +68,7 @@ public class Chord {
             ebmajor.put("vii", new int[]{26, 29, 32});
 
             int[] ch = ebmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "e") {
@@ -76,6 +82,7 @@ public class Chord {
             emajor.put("vii", new int[]{27, 30, 33});
 
             int[] ch = emajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "f") {
@@ -89,6 +96,7 @@ public class Chord {
             fmajor.put("vii", new int[]{28, 31, 34});
 
             int[] ch = fmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "gb") {
@@ -102,6 +110,7 @@ public class Chord {
             gbmajor.put("vii", new int[]{29, 32, 35});
 
             int[] ch = gbmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "g") {
@@ -115,6 +124,7 @@ public class Chord {
             gmajor.put("vii", new int[]{30, 33, 36});
 
             int[] ch = gmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "ab") {
@@ -128,6 +138,7 @@ public class Chord {
             abmajor.put("vii", new int[]{31, 34, 37});
 
             int[] ch = abmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "a") {
@@ -141,6 +152,7 @@ public class Chord {
             amajor.put("vii", new int[]{32, 35, 38});
 
             int[] ch = amajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "bb") {
@@ -154,6 +166,7 @@ public class Chord {
             bbmajor.put("vii", new int[]{33, 36, 39});
 
             int[] ch = bbmajor.get(number);
+            ch = this.adjust_chord_range(ch);
             return ch;
         }
         else if (k.letter == "b") {
@@ -167,9 +180,26 @@ public class Chord {
             bmajor.put("vii", new int[]{34, 37, 40});
 
             int[] ch = bmajor.get(number);
+
+            ch = this.adjust_chord_range(ch);
+            //System.out.println("ch[0] = " + ch[0]);
             return ch;
         }
         else{return new int[]{0};}
+
+
+    }
+
+    public int[] adjust_chord_range(int[] chord){
+        //System.out.println("chord[0] " + chord[0]);
+        while (chord[0] + 12 <= key){
+            //System.out.println("chord[0] " + chord[0]);
+            chord[0] += 12;
+            chord[1] += 12;
+            chord[2] += 12;
+        }
+        //System.out.println("new chord[0] " + chord[0]);
+        return chord;
     }
 
     public Chord get_next(Note note, int key) {
@@ -193,13 +223,11 @@ public class Chord {
 
         String num = number;
         double[] probs = progression.get(num);
-        Chord[] options = note.get_chords(60, "major");
-        //System.out.println("options " + options[0].number + " " + options[1].number + " " + options[2].number);
+        Chord[] options = note.get_chords(key, "major");
 
         //generate "random" based on probabilities
         Random rand = new Random();
         int r = rand.nextInt(100) + 1;
-        //System.out.println(r);
 
         int next = -1;
 
@@ -229,23 +257,37 @@ public class Chord {
                 int_options[j] = 6;
             }
         }
-        //System.out.println("int_options " + int_options[0] + " " + int_options[1] + " " + int_options[2]);
 
         double[] options_probs = new double[int_options.length];
-        int max_idx = -1;
-        double max = -1;
+        //int max_idx = -1;
+        //double max = -1;
         for(int i = 0; i < int_options.length; i++){
             options_probs[i] = probs[int_options[i]];
-            if(options_probs[i] > max){
+            /*if(options_probs[i] > max){
                 max = options_probs[i];
                 max_idx = int_options[i];
-            }
+            }*/
         }
-        /*System.out.println("options_probs " + options_probs[0] + " " + options_probs[1] + " " + options_probs[2]);
-        System.out.println("max " + max);
-        System.out.println("man_idx" + max_idx);*/
-        next = max_idx;
+        double sum = Arrays.stream(options_probs).sum();
+        for(int i = 0; i < options_probs.length; i++){
+            options_probs[i] = options_probs[i]/sum;
+        }
 
+        //use random number to decide on chord
+        double total = 0;
+        int index = -1;
+        double random = (double) r / 100;
+        for(int i = 0; i < options_probs.length; i++){
+            if(random <= total + options_probs[i]){
+                index = i;
+                break;
+            }
+            total += options_probs[i];
+        }
+
+
+        //next = max_idx;
+        next = index;
 
 
         Chord next_chord = new Chord();
@@ -266,10 +308,21 @@ public class Chord {
         }
 
         next_chord.key = key;
+        //System.out.println("next_chord.key is " + next_chord.key);
+        next_chord.change_octave(note);
+
 
         return next_chord;
     }
 
+    public void change_octave(Note note){
+        int highest_chord_tone = key + 17;
+        while (highest_chord_tone >= note.midi_num){
+            this.key = key - 12;
+            highest_chord_tone = key;
+        }
+        //System.out.println("key is " + key);
+    }
 
 
     public static void main(String[] args) {
@@ -282,6 +335,6 @@ public class Chord {
         g.midi_num = 67;
 
         Chord next = f.get_next(g, 60);
-        System.out.println("next number " + next.number);
+        //System.out.println("next number " + next.number);
     }
 }
