@@ -202,6 +202,43 @@ public class Chord {
         return chord;
     }
 
+    public Chord choose_first(Note note, int key, String type){
+
+        key = key - 12;
+        double[][] progression = new double[][]{{.5, 0, 0, .15, .35, 0, 0}, {.2, .5, 0, 0, .3, 0, 0},
+                {.4, 0, .5, 0, 0, .1, 0}, {.2, .1, 0, .5, .2, 0, 0}, {.4, 0, 0, .01, .5, 0, .0},
+                {0, .3, 0, 0, .2, .5, 0}, {.8, 0, 0, 0, .2, 0, 0}};
+
+        Chord[] options = note.get_chords(key, type);
+        //first prefer I, or else choose chord with highest combined probability from matrix
+        double max = -1;
+        int max_idx = -1;
+        double[] sum_probs = new double[options.length];
+
+        for(int i = 0; i < options.length; i ++){
+            if(options[i].number == "i"){
+                Chord first = new Chord(); first.number = "i"; first.key = key;
+                return first;
+            }
+            sum_probs[i] = 0;
+            for(int j = 0; j < progression.length; j++){
+                sum_probs[i] += progression[j][options[i].chord_to_index()];
+            }
+            if(sum_probs[i] > max) max = sum_probs[i]; max_idx = i;
+        }
+        return options[max_idx];
+    }
+
+    public int chord_to_index(){
+        if(number == "i") return 0;
+        else if(number == "ii") return 1;
+        else if(number == "iii") return 2;
+        else if(number == "iv") return 3;
+        else if(number == "v") return 4;
+        else if(number == "vi") return 5;
+        else return 6;
+    }
+
     public Chord get_next(Note note, int key) {
 
         Map<String, double[]> progression = new HashMap<String, double[]>();
@@ -274,11 +311,15 @@ public class Chord {
         }
 
         //use random number to decide on chord
+
         double total = 0;
         int index = -1;
         double random = (double) r / 100;
+        System.out.println("options_probs is " + options_probs[0] + options_probs[1] + options_probs[2]);
         for(int i = 0; i < options_probs.length; i++){
-            if(random <= total + options_probs[i]){
+            double s = Math.round(total + options_probs[i]);
+            System.out.println("sum is " + s);
+            if(random <= Math.round(total + options_probs[i])){
                 index = i;
                 break;
             }
@@ -286,8 +327,10 @@ public class Chord {
         }
 
 
+        System.out.println("random is " + random);
         //next = max_idx;
-        next = index;
+        System.out.println("index at end is " + index);
+        next = int_options[index];
 
 
         Chord next_chord = new Chord();

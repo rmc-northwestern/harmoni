@@ -4,6 +4,7 @@ public class Note {
 
     public int midi_num;
     public String letter;
+    //public boolean first_note = false;
 
 
     Chord[] chords;
@@ -71,7 +72,60 @@ public class Note {
             else if(letter == "a") {c = new Chord[] {v, iii, i};}
             else if(letter == "b") {c = new Chord[] {ii, iv, vi};}
             else {c = new Chord[] {ii, v, vii};}} //letter was "c" -- no accidentals
-        else {c = new Chord[] {};}
+        //else {c = new Chord[] {};}
+
+        else if(k.letter == "e"){
+            if(letter == "e") {c = new Chord[]{i, vi, iv};}
+            else if(letter == "f") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "g") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "a") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "b") {c = new Chord[] {v, iii, i};}
+            else if(letter == "c") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}
+            }
+
+        else if(k.letter == "f"){
+            if(letter == "f") {c = new Chord[]{i, vi, iv};}
+            else if(letter == "g") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "a") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "b") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "c") {c = new Chord[] {v, iii, i};}
+            else if(letter == "d") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}
+        }
+
+        else if(k.letter == "g"){
+            if(letter == "g") {c = new Chord[]{i, vi, iv};}
+            else if(letter == "a") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "b") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "c") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "d") {c = new Chord[] {v, iii, i};}
+            else if(letter == "e") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}
+        }
+
+        else if(k.letter == "a"){
+            if(letter == "a") {c = new Chord[]{i, vi, iv};}
+            else if(letter == "b") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "c") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "d") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "e") {c = new Chord[] {v, iii, i};}
+            else if(letter == "f") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}
+        }
+
+        else if(k.letter == "b"){
+            if(letter == "b") {c = new Chord[]{i, vi, iv};}
+            else if(letter == "c") {c = new Chord[] {ii, v, vii};}
+            else if(letter == "d") {c = new Chord[] {iii, i, vi};}
+            else if(letter == "e") {c = new Chord[] {ii, iv, vii};}
+            else if(letter == "f") {c = new Chord[] {v, iii, i};}
+            else if(letter == "g") {c = new Chord[] {ii, iv, vi};}
+            else {c = new Chord[] {ii, v, vii};}
+        }
+
+        else{c = new Chord[]{};} //black key
+
         chords = c;
         return c;
     }

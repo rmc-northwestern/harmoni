@@ -21,26 +21,96 @@ public class Main {
 
         //figure out here how to choose first chord
         int key = key_from_input(notes, note_name);
-        Chord current = new Chord(); current.number = "i"; current.key = key - 12;
+        //Chord current = new Chord(); current.number = "i"; current.key = key - 12;
+        Note first_note = new Note(); first_note.midi_num = notes[0]; first_note.note_to_String();
+        Chord current = new Chord(); current = current.choose_first(first_note, key, "major");
         out[0] = current.build_chord();
+        System.out.println("first chord is " + current.number);
 
         for(int i = 1; i < notes.length; i++){
-            System.out.println("current chord.number is " + current.number);
-            System.out.println("current chord.key is " + current.key);
+            //System.out.println("current chord.number is " + current.number);
+            //System.out.println("current chord.key is " + current.key);
             int next_n = notes[i];
             Note next_note = new Note(); next_note.midi_num = next_n; next_note.note_to_String();
-            System.out.println("next note is " + next_note.letter);
+            //System.out.println("next note is " + next_note.letter);
 
             Chord next = current.get_next(next_note, key);
+
+            out[i] = next.build_chord();
+            System.out.println("current chord is " + current.number + " and next note is " + next_note.letter);
+            System.out.println("next chord is " + next.number);
+
             current = next;
-            out[i] = current.build_chord();
-
-
             //System.out.println("next.number is " + next.number);
             //System.out.println("next.key is " + next.key);
             //current = next;
         }
         return out;
+    }
+
+    public String array_to_string(int[][] chords){
+        String out = "[";
+        for(int i = 0; i < chords.length; i++){
+            for(int j = 0; j < chords[0].length; j++){
+                if(j==0) out += "[";
+                out += Integer.toString(chords[i][j]);
+                if(j!= 2) out += ",";
+                if(j==2) {
+                    out += "]";
+                    if(i != chords.length -1){
+                        out += ",";
+                    }
+                }
+            }
+        }
+        out += "]";
+        return out;
+    }
+
+
+    public void write_to_file(int[][] chords, String path_to_midi){
+
+        String out = path_to_midi + '\n';
+        out += array_to_string(chords);
+
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+
+            String content = out;
+
+            fw = new FileWriter("java_out.txt");
+            bw = new BufferedWriter(fw);
+
+            bw.write(content);
+
+
+            System.out.println(out + " is written to file " + "java_out.txt");
+
+            //bw.write(Arrays.toString(chords));
+            //System.out.println("test is " + Arrays.toString(chords));
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (bw != null)
+                    bw.close();
+
+                if (fw != null)
+                    fw.close();
+
+            } catch (IOException ex) {
+
+                ex.printStackTrace();
+
+            }
+
+        }
     }
 
     public int key_from_input(int[] notes, String note_name){
@@ -112,7 +182,7 @@ public class Main {
         return out;
     }
 
-    public void nums_from_midi(String path){
+    /*public void nums_from_midi(String path){
         MidiParser mp = new MidiParser();
         int[] notes = mp.get_notes(path);
 
@@ -120,6 +190,10 @@ public class Main {
         String out = "";
 
         Chord current = new Chord(); current.number = "i"; current.key = 48;
+        //Chord current = new Chord;
+        current = current.choose_first(notes[0], )
+
+
         for(int i = 0; i < notes.length; i++){
             int note = notes[i];
             Note n = new Note(); n.midi_num = note; n.note_to_String();
@@ -168,22 +242,24 @@ public class Main {
 
 
 
-    }
+    }*/
 
 
 
     public static void main(String[] args) {
-        //args = new String[]{"test_simple.mid"};
+        args = new String[]{"deck the halls.mid"};
 
         Main m = new Main();
         //m.nums_from_midi(args[0]);
 
 
-        int[][] test = m.chords_from_midi("test_simple.mid", "C");
-        System.out.printf("%d %d %d", test[0][0], test[0][1], test[0][2]);
-        System.out.printf("%d %d %d", test[1][0], test[1][1], test[1][2]);
-        System.out.printf("%d %d %d", test[2][0], test[2][1], test[2][2]);
-        System.out.printf("%d %d %d", test[3][0], test[3][1], test[3][2]);
+        int[][] test = m.chords_from_midi("deck the halls.mid", "C");
+        /*System.out.println(test[0][0] + " " + test[0][1] + " " + test[0][2]);
+        System.out.println(test[1][0] + " " + test[1][1] + " " + test[1][2]);
+        System.out.println(test[2][0] + " " + test[2][1] + " " + test[2][2]);
+        System.out.println(test[3][0] + " " + test[3][1] + " " + test[3][2]);*/
 
+        //System.out.println("array to string is " + m.array_to_string(test));
+        m.write_to_file(test, "deck the halls.mid");
     }
 }
