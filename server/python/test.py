@@ -84,19 +84,7 @@ def final(chords, path):
 #test("test_simple.mid")
 #final([[60,64,67], [67,71,74], [60,64,67],[60,64,67]], "test_simple.mid")
 
-chords,path = read_file("../eecs352/harmoni/final_java_code/backend/java_out.txt")
+chords,path = read_file("../java_out.txt")
 #print(ast.literal_eval(chords))
 
 final(chords, path)
-
-
-
-
-
-
-
-
-
-
-
-

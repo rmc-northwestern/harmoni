@@ -15,13 +15,13 @@ module.exports = async function upload(req, res) {
     inputFile = 'input.mid'
     fs.copyFile(file.path,inputFile,console.log)
 
-    //check for existing test file to make sure an old one isnt returned
-    if (fs.existsSync('files/result.txt')) {
-      fs.unlinkSync('files/result.txt'); //make sure to not send old file
-    }
+    // //check for existing test file to make sure an old one isnt returned
+    // if (fs.existsSync('result.txt')) {
+    //   fs.unlinkSync('result.txt'); //make sure to not send old file
+    // }
 
     console.log('running java on file ', inputFile)
-    var child = await require('child_process').spawn('java',['-jar', 'files/backend.jar', inputFile, key, keytype]);
+    var child = await require('child_process').spawn('java',['-jar', 'backend.jar', inputFile, key, keytype]);
 
     child.stdout.on('data', (data) => {
       console.log(`child stdout:\n${data}`);
