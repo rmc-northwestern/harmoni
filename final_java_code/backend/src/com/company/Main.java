@@ -70,7 +70,7 @@ public class Main {
 
     public void write_to_file(int[][] chords, String path_to_midi){
 
-        String out = path_to_midi + '\n';
+        String out = "../" + path_to_midi + '\n';
         out += array_to_string(chords);
 
         BufferedWriter bw = null;
