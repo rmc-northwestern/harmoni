@@ -26,7 +26,7 @@ class Upload extends Component {
   }
 
   async uploadFiles() {
-    if (!this.state.key){
+    if (!this.state.key || !this.state.keytype){
       alert('Whoops! Make sure to select a key!')
       return
     }
@@ -76,9 +76,10 @@ class Upload extends Component {
       });
 
       const formData = new FormData();
-      formData.append("file", file, this.state.key);
+      let filename = this.state.key + this.state.keytype
+      formData.append("file", file, filename);
 
-      req.open("POST", "http://localhost:8000/upload");
+      req.open("POST", "http://54.197.199.36:8000/upload");
       req.send(formData);
 
     });
@@ -142,7 +143,7 @@ class Upload extends Component {
     if (this.state.files.length > 0){
       return(
         <div>
-          <div>Choose the major key signature...&nbsp;<b style={{color: '#B80F42', fontSize:'1.2em'}}>{this.state.key}</b></div>
+          <div>Choose the major key signature...&nbsp;<b style={{color: '#B80F42', fontSize:'1.2em'}}>{this.state.key} {this.state.keytype}</b></div>
           <div className='pianoContainer'>
             <div className={this.keyStyle('C')} onClick={()=>this.selectKey('C')}></div>
             <div className={this.keyStyle('D')} onClick={()=>this.selectKey('D')}></div>
@@ -159,6 +160,24 @@ class Upload extends Component {
             <div className={this.keyStyle('Bb')} id='Bb' onClick={()=>this.selectKey('Bb')}></div>
           </div>
       </div>
+      )
+    }
+  }
+
+  selectKeyButtons(type){
+    if (type === this.state.keytype){
+      return 'keySelect keySelected'
+    }
+    return 'keySelect keyUnselected'
+  }
+
+  renderKeySelect(){
+    if (this.state.key){
+      return(
+        <div>
+          <button className={this.selectKeyButtons('major')} onClick={()=>this.setState({keytype:'major'})}>Major</button>
+          <button className={this.selectKeyButtons('minor')} onClick={()=>this.setState({keytype:'minor'})}>Minor</button>
+        </div>
       )
     }
   }
@@ -186,6 +205,7 @@ class Upload extends Component {
             })}
 
             {this.renderPiano()}
+            {this.renderKeySelect()}
           </div>
         </div>
         <div className="Actions">{this.renderActions()}</div>

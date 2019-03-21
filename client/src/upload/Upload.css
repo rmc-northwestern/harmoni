@@ -103,3 +103,20 @@ button:disabled {
   background: rgb(189, 189, 189);
   cursor: default;
 }
+
+.keySelect{
+  display: inline-block;
+  position: relative;
+  padding: 5px 10px;
+  margin: 10px;
+  font-size: 12pt;
+  color: white;
+}
+
+.keySelected{
+  background:  #B80F42 !important;
+}
+
+.keyUnselected{
+  background:  #ccc !important;
+}
