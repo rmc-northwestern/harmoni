@@ -116,7 +116,7 @@ class App extends Component {
             </div>
 
             <div className='cardContainer'>
-              <a href='http://54.197.199.36:8000/download'>
+              <a href='http://localhost:8000/download'>
                 <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
               </a>
             </div>

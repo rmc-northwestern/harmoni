@@ -31,6 +31,16 @@ module.exports = async function upload(req, res) {
       console.error(`child stderr:\n${data}`);
     });
 
+    var child_python = await require('child_process').spawn('python3',['python/test.py']);
+
+    child_python.stdout.on('data', (data) => {
+      console.log(`child stdout:\n${data}`);
+    });
+
+    child_python.stderr.on('data', (data) => {
+      console.error(`child stderr:\n${data}`);
+    });
+
     // fs.unlinkSync('files/input.mid'); //remove input
 
   });
