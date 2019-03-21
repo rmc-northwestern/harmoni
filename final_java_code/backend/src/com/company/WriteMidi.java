@@ -1,4 +1,4 @@
-package com.company;
+/*package com.company;
 
 import java.io.*;
 import java.util.*;
@@ -51,4 +51,4 @@ public class WriteMidi {
 
         System.out.println("midifile end ");
     } //main
-} //midifile
+} //midifile*/

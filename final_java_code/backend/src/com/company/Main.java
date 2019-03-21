@@ -25,7 +25,7 @@ public class Main {
         Note first_note = new Note(); first_note.midi_num = notes[0]; first_note.note_to_String();
         Chord current = new Chord(); current = current.choose_first(first_note, key, "major");
         out[0] = current.build_chord();
-        System.out.println("first chord is " + current.number);
+        //System.out.println("first chord is " + current.number);
 
         for(int i = 1; i < notes.length; i++){
             //System.out.println("current chord.number is " + current.number);
@@ -37,8 +37,8 @@ public class Main {
             Chord next = current.get_next(next_note, key);
 
             out[i] = next.build_chord();
-            System.out.println("current chord is " + current.number + " and next note is " + next_note.letter);
-            System.out.println("next chord is " + next.number);
+            //System.out.println("current chord is " + current.number + " and next note is " + next_note.letter);
+            //System.out.println("next chord is " + next.number);
 
             current = next;
             //System.out.println("next.number is " + next.number);
@@ -247,19 +247,20 @@ public class Main {
 
 
     public static void main(String[] args) {
-        args = new String[]{"deck the halls.mid"};
+        //args = new String[]{"deck the halls.mid"};
 
         Main m = new Main();
         //m.nums_from_midi(args[0]);
 
 
-        int[][] test = m.chords_from_midi("deck the halls.mid", "C");
+        //int[][] test = m.chords_from_midi("deck the halls.mid", "C");
+        int[][] test = m.chords_from_midi(args[0], args[1]);
         /*System.out.println(test[0][0] + " " + test[0][1] + " " + test[0][2]);
         System.out.println(test[1][0] + " " + test[1][1] + " " + test[1][2]);
         System.out.println(test[2][0] + " " + test[2][1] + " " + test[2][2]);
         System.out.println(test[3][0] + " " + test[3][1] + " " + test[3][2]);*/
 
         //System.out.println("array to string is " + m.array_to_string(test));
-        m.write_to_file(test, "deck the halls.mid");
+        m.write_to_file(test, args[0]);
     }
 }

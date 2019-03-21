@@ -315,7 +315,7 @@ public class Chord {
         double total = 0;
         int index = -1;
         double random = (double) r / 100;
-        System.out.println("options_probs is " + options_probs[0] + options_probs[1] + options_probs[2]);
+        //System.out.println("options_probs is " + options_probs[0] + options_probs[1] + options_probs[2]);
         for(int i = 0; i < options_probs.length; i++){
             double s = Math.round(total + options_probs[i]);
             System.out.println("sum is " + s);
@@ -327,9 +327,9 @@ public class Chord {
         }
 
 
-        System.out.println("random is " + random);
+        //System.out.println("random is " + random);
         //next = max_idx;
-        System.out.println("index at end is " + index);
+        //System.out.println("index at end is " + index);
         next = int_options[index];
 
 
