@@ -25,19 +25,16 @@ public class WriteMidi {
                     MidiEvent event = track1.get(k);
                     MidiMessage msg = event.getMessage();
                     byte[] data = msg.getMessage();
-                    for (int j = 0; j < data.length; j++) {
-                        String s1 = String.format("%8s", Integer.toBinaryString(data[j] & 0xFF)).replace(' ', '0');
-                        String s2 = "1001";
-                        String s3 = "1000";
-                        if (s1.startsWith(s2)) {
-                            data[j] = 60;
-                            System.out.println(k + " is the index of k. The note is: " + +data[1] + "and the velocity is: " + data[2]);
+                    String s1 = String.format("%8s", Integer.toBinaryString(data[0] & 0xFF)).replace(' ', '0');
+                    String s2 = "1001";
+                    String s3 = "1000";
+                    if (s1.startsWith(s2)) {
+                        data[1] = 59;
+                        System.out.println(k + " is the index of k. The note is: " + +data[1] + "and the velocity is: " + data[2]);
 
-                        }
-                        if (s1.startsWith(s3)) {
-                            data[j] = 60;
-                        }
-
+                    }
+                    if (s1.startsWith(s3)) {
+                        data[1] = 59;
                     }
                     sequence.createTrack().add(event);
                 }
@@ -56,7 +53,3 @@ public class WriteMidi {
         System.out.println("midifile end ");
     } //main
 } //midifile
-
-
-
-
