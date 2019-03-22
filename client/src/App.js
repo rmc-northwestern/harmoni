@@ -71,8 +71,7 @@ class App extends Component {
                 <div className='cardHeader'>YOU GIVE US:</div>
                 <div className='cardBody'>
                   Input MIDI file<br/>
-                  Monophonic Melody<br/>
-                  Basic Metadata
+                  Key Signature
                 </div>
               </div>
 
@@ -80,8 +79,7 @@ class App extends Component {
                 <div className='cardHeader'>WE GIVE YOU:</div>
                 <div className='cardBody'>
                   Output MIDI file<br/>
-                  Harmonized Accompaniment<br/>
-                  Chord Progression
+                  Harmonized Melody
                 </div>
               </div>
               <br/>
@@ -130,6 +128,8 @@ class App extends Component {
               <a href='http://54.197.199.36:8000/download'>
                 <button className='buttonPrimary'>DOWNLOAD MIDI FILES</button>
               </a>
+              <br/>
+              <button className='buttonSecondary' onClick={()=>this.setState({loading:false,complete:false})}>START OVER</button>
             </div>
 
           </header>
