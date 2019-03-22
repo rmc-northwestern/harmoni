@@ -79,7 +79,7 @@ class Upload extends Component {
       let filename = this.state.key + 'Major'
       formData.append("file", file, filename);
 
-      req.open("POST", "http://localhost:8000/upload");
+      req.open("POST", "http://54.197.199.36:8000/upload");
       req.send(formData);
 
     });
