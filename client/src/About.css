@@ -1,5 +1,5 @@
 .group{
-  max-height:200px;
+  max-height:300px;
   filter: grayscale(100%);
   opacity: .4;
   z-index: 999;
@@ -15,7 +15,7 @@
 }
 
 .tint{
-  height: 200px;
+  height: 300px;
   max-width: 40%;
   display: inline-block;
   background: #B80F42;
@@ -23,7 +23,9 @@
   transition: all .5s ease-out;
   border-radius: 10px;
   vertical-align: middle;
-  margin-top: 40px;
+  margin: 20px 0px;
+  text-align: right;
+  overflow: hidden;
 }
 
 .tint:hover{
@@ -35,8 +37,16 @@
   width: 50%;
   position: relative;
   color: white;
-  font-size: 10pt;
+  font-size: 12pt;
   font-weight: 100;
   vertical-align: middle;
   padding: 20px;
+}
+
+.left{
+  text-align: left;
+}
+
+.right{
+  text-align: right;
 }
