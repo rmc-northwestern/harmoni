@@ -143,7 +143,7 @@ class Upload extends Component {
     if (this.state.files.length > 0){
       return(
         <div>
-          <div>Choose the major key signature...&nbsp;<b style={{color: '#B80F42', fontSize:'1.2em'}}>{this.state.key} {this.state.keytype}</b></div>
+          <div>Choose the key signature...&nbsp;<b style={{color: '#B80F42', fontSize:'1.2em'}}>{this.state.key} {this.state.keytype}</b></div>
           <div className='pianoContainer'>
             <div className={this.keyStyle('C')} onClick={()=>this.selectKey('C')}></div>
             <div className={this.keyStyle('D')} onClick={()=>this.selectKey('D')}></div>
