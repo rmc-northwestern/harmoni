@@ -100,9 +100,9 @@ def final(chords, path):
 		chord_counter += 1
 
 	'''track.insert(7, midi.NoteOnEvent(tick=0, channel=0, data=[36, 90]))'''
-	print("writing pattern to test.mid")
-	print("pattern is ", pattern)
-	midi.write_midifile("test.mid", pattern)
+	print("writing pattern to harmoni.mid")
+	# print("pattern is ", pattern)
+	midi.write_midifile("harmoni.mid", pattern)
 
 
 #write_midi([[36, 40, 43], [31, 35, 38], [36, 40, 43], [36, 40, 43]], "./test_simple.mid")

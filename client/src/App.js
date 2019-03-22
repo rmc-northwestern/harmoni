@@ -39,7 +39,7 @@ class App extends Component {
   waitForComplete(){
     window.setTimeout(()=>{
       this.setState({complete:true,loading:false})
-    },2000)
+    },4000)
   }
 
   render() {
