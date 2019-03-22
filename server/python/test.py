@@ -70,10 +70,9 @@ def final(chords, path):
 
 	i = 0
 	for index in num_notes:
-        velocity = track[index.data[1]]
-		event1 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][0], velocity - 15])
-		event2 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][1], velocity - 15])
-		event3 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][2], velocity - 15])
+		event1 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][0], 60])
+		event2 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][1], 60])
+		event3 = midi.NoteOnEvent(tick=0, channel=0, data=[chords[chord_counter][2], 60])
 		track.insert(index + 1 + i, event1)
 		track.insert(index + 2 + i, event2)
 		track.insert(index + 3 + i, event3)
@@ -90,9 +89,9 @@ def final(chords, path):
 	chord_counter = 0
 	i = 0
 	for index in off_indices:
-		event1 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][0], velocity - 15])
-		event2 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][1], velocity - 15])
-		event3 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][2], velocity - 15])
+		event1 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][0], 60])
+		event2 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][1], 60])
+		event3 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][2], 60])
 		track.insert(index + 1 + i, event1)
 		track.insert(index + 2 + i, event2)
 		track.insert(index + 3 + i, event3)
