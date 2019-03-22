@@ -2,6 +2,10 @@ import midi
 #import numpy as np
 import copy
 import ast
+import os
+
+cwd = os.getcwd()
+print("python directory is ", cwd)
 
 #pattern = midi.read_midifile("../test_simple.mid")
 #print(pattern)
@@ -84,7 +88,11 @@ def final(chords, path):
 #test("test_simple.mid")
 #final([[60,64,67], [67,71,74], [60,64,67],[60,64,67]], "test_simple.mid")
 
+<<<<<<< HEAD
+chords,path = read_file("./java_out.txt")
+=======
 chords,path = read_file("java_out.txt")
+>>>>>>> 975701bd5f99905542136407024c7bdad853e433
 #print(ast.literal_eval(chords))
 
 final(chords, path)
