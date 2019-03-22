@@ -63,6 +63,7 @@ def final(chords, path):
 	chord_counter = 0
 
 	num_notes = []
+
 	for i in range(l):
 		if isinstance(track[i], midi.NoteOnEvent):
 			num_notes.append(i)
@@ -76,10 +77,31 @@ def final(chords, path):
 		track.insert(index + 2 + i, event2)
 		track.insert(index + 3 + i, event3)
 		i += 3
+
+		chord_counter += 1
+
+
+	off_indices = []
+	for i in range(len(track)):
+		if isinstance(track[i], midi.NoteOffEvent):
+			off_indices.append(i)
+
+	chord_counter = 0
+	i = 0
+	for index in off_indices:
+		event1 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][0], 90])
+		event2 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][1], 90])
+		event3 = midi.NoteOffEvent(tick=0, channel=0, data=[chords[chord_counter][2], 90])
+		track.insert(index + 1 + i, event1)
+		track.insert(index + 2 + i, event2)
+		track.insert(index + 3 + i, event3)
+		i += 3
+
 		chord_counter += 1
 
 	'''track.insert(7, midi.NoteOnEvent(tick=0, channel=0, data=[36, 90]))'''
 	print("writing pattern to test.mid")
+	print("pattern is ", pattern)
 	midi.write_midifile("test.mid", pattern)
 
 
