@@ -35,7 +35,7 @@ class About extends Component {
 
             <div className='bodyText right' style={{width: '30%'}}>
               <b style={{fontSize:'1.3em'}}>The Tool:</b><br/><br/>
-              Harmoni is a tool that provides users with harmonized versions of basic melodies. The user inputs a monophonic Musical Instrument Digital Interface (MIDI) file, and the key of the melody. Harmoni outputs the corresponding harmonized polyphonic MIDI file for download.
+              Harmoni is a tool that provides users with harmonized versions of basic melodies. The user inputs a monophonic Musical Instrument Digital Interface (MIDI) file, and the key of the melody. We assume that the given melody only uses notes within the given key signature. Harmoni returns a harmonized polyphonic MIDI file for download.
             </div>
             <div className='tint'>
               <img className='group' src='/group.jpeg' alt='group' />
