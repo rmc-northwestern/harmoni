@@ -31,6 +31,9 @@ module.exports = async function upload(req, res) {
       console.error(`child stderr:\n${data}`);
     });
 
+    fs.copyFile('java_out.txt','python/java_out.txt',console.log)
+    fs.copyFile(file.path,'python/input.mid',console.log)
+
     var child_python = await require('child_process').spawn('python3',['python/test.py']);
 
     child_python.stdout.on('data', (data) => {
