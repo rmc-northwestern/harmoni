@@ -164,6 +164,7 @@ input{
   max-width: 300px;
   transition: all .2s;
   background: #B80F42;
+  font-family: roboto;
 }
 
 .buttonSecondary{
@@ -181,6 +182,7 @@ input{
   color: #B80F42;
   background: white;
   transform: scale(.8);
+  font-family: roboto;
 }
 
 .buttonPrimary:hover{
