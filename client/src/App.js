@@ -42,6 +42,16 @@ class App extends Component {
     },4000)
   }
 
+  renderSampleMidiBox(){
+    return(
+      <a href='http://localhost:8000/sampledownload'>
+        <div className='lightbox'>
+          Download a Sample MIDI File for Testing!
+        </div>
+      </a>
+    )
+  }
+
   render() {
     if (!this.state.loading && !this.state.complete){
       return (
@@ -49,6 +59,7 @@ class App extends Component {
           <header className="App-header">
             <Nav current='home'/>
             <video src='/wave.mov' autoPlay loop className="App-logo" alt="logo"/>
+            {this.renderSampleMidiBox()}
             <div className='title'>
               <span className='titleBlue'>&lt;</span>
               &nbsp;harmoni&nbsp;

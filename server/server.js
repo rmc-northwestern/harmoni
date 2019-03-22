@@ -18,6 +18,11 @@ server.get('/download', function(req, res){
   res.download(file); // Set disposition and send it.
 });
 
+server.get('/sampledownload', function(req, res){
+  var file = 'Row-Row-Row-Your-Boat-F-Major.mid'
+  res.download(file); // Set disposition and send it.
+});
+
 server.listen(8000, () => {
   console.log("Server started!");
 });
