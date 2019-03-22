@@ -81,7 +81,7 @@ def final(chords, path):
 		chord_counter += 1
 
 
-	off_indices = []
+	'''off_indices = []
 	for i in range(len(track)):
 		if isinstance(track[i], midi.NoteOffEvent):
 			off_indices.append(i)
@@ -97,7 +97,7 @@ def final(chords, path):
 		track.insert(index + 3 + i, event3)
 		i += 3
 
-		chord_counter += 1
+		chord_counter += 1'''
 
 	'''track.insert(7, midi.NoteOnEvent(tick=0, channel=0, data=[36, 90]))'''
 	print("writing pattern to harmoni.mid")
