@@ -31,10 +31,11 @@ module.exports = async function upload(req, res) {
       console.error(`child stderr:\n${data}`);
     });
 
-    fs.copyFile('java_out.txt','python/java_out.txt',console.log)
-    fs.copyFile(file.path,'python/input.mid',console.log)
-
     setTimeout(async ()=> {
+
+      // fs.copyFile('java_out.txt','python/java_out.txt',console.log)
+      // fs.copyFile(file.path,'python/input.mid',console.log)
+
       var child_python = await require('child_process').spawn('python3',['python/test.py']);
 
       child_python.stdout.on('data', (data) => {
@@ -44,10 +45,12 @@ module.exports = async function upload(req, res) {
       child_python.stderr.on('data', (data) => {
         console.error(`child stderr:\n${data}`);
       });
-    }, 2000);
+    }, 3000);
 
-
-    // fs.unlinkSync('files/input.mid'); //remove input
+    setTimeout(async ()=> {
+      fs.unlinkSync('java_out.txt'); //delete old input files
+      fs.unlinkSync('input.mid'); //delete old input files
+    }, 6000);
 
   });
   form.on("end", () => {
