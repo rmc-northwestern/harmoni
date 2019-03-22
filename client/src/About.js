@@ -71,7 +71,7 @@ class About extends Component {
               <br/><br/>
               <b>3. Write to MIDI:</b> Our algorithm then creates and edits the original MIDI file by adding a “legal” progression of non-inverted triads to it. This step provides an appropriate harmonization of the input melody.
               <br/><br/>
-              Because Harmoni aims to get young or inexperienced musicians more excited about composing, the algorithm incorporates an element of randomness. More specifically, Harmoni keeps it interesting by choosing the next chord in a progression based on probabilities on our major and minor progression matrices. This means a user may input the same melody twice and obtain two different output harmonizations.
+              Because Harmoni aims to get young or inexperienced musicians more excited about composing, the algorithm incorporates an element of randomness. More specifically, Harmoni keeps it interesting by choosing the next chord in a progression based on probabilities on our progression matrix. This means a user may input the same melody twice and obtain two different output harmonizations.
             </div>
             <div className='tint'>
               <img className='group' src='/workflow.png' alt='setup' />
